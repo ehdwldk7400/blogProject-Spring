@@ -8,4 +8,8 @@
   	<insert id="createTag">
   		insert into tag(tagname) values(#{tagname});
   	</insert>
+  	<select id="tagList" resultType="com.jin.doamin.tagVO">
+  		select * from tag
+  	</select>
+  	
   </mapper>

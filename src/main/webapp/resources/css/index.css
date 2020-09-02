@@ -10,7 +10,7 @@ main{
 }
  
 /* 헤더설정 영역 */
-.header-ul{ display: flex; float: right; }
+.header-ul{ display: flex; float: right;  position: absolute;   right: 19%;}
 .header-ul li{ font-size: 18px; width: 4rem; height: auto; text-align: center; }
 
 /* 프로필 및 태그 설정 영역 */
@@ -38,18 +38,19 @@ main{
 .tag-list{ color: #b6b6b6; font-size: .875rem; display: inline;}
 
 .tag{ margin-bottom: .815rem;}
-.tag ul { margin: 0. -.625rem;}
-.tag ul li{ display: inline-block; margin: .625rem .3125rem; padding: 0 .3125rem;}
+.tag ul { margin: 0. -.625rem; }
+.tag ul li{ display: inline-block; margin: .625rem .3125rem; padding: 0 .3125rem; height: 35px;}
 .tag ul li a{ 
     display: inline-block; height: 35px; padding: 0 1.5rem;
     line-height: 2.1875rem; border: 1px solid #e6e6e6;
     border-radius: 1.25rem; color: #222;
+    font-size: 1rem;
 }
 
 /* 메인 컨텐츠 영역 */
 .main-text{
     border: 1px solid #000;
-    width: calc(66.6% - .625rem);
+    width: calc(68.6% - .625rem);
 }
 .in-cont{
     padding: 2.5rem 2.1875rem;

@@ -62,6 +62,9 @@
 				</div>
 				<div class="tag">
 					<ul class="tag-ul">
+					<c:forEach items="${tag}" var="Tag">
+						<li><a href="/blog/board?=${Tag.tagname}">${Tag.tagname}</a></li>
+					</c:forEach>
 					</ul>
 				</div>
 			</div>
