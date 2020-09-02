@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jin.dao.UserDAO">
+	<insert id="createUser">
+		insert into users(userid,userpw,username,gender)
+		values(#{userid}, #{userpw}, #{username}, #{gender});
+	</insert>
+	
+	<select id="login" resultType="com.jin.doamin.usersVO">
+		select userid, userpw, username from users where userid=#{userid} and userpw=#{userpw};
+	</select>
+
+</mapper>
