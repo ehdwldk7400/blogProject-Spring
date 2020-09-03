@@ -72,8 +72,24 @@
 		<!-- 콘텐츠 영역 -->
 		<div class="main-text">
 			<div class="in-cont">
-				<h1 class="title-tag">nodejs</h1>
-				<div class="cont-list"></div>
+				<h1 class="title-tag">All_list</h1>
+				<div class="cont-list">
+					<c:forEach items="${post}" var="Post">
+						<div class=cont-in-list>
+							<div class="cont-item">
+								<time class="cont-time" datetime="${Post.regdate}">${Post.regdate}</time>
+								<span class="item-span-point"></span>
+								<span class="item-sapn"><a>${Post.tagname }</a></span>
+								<span class="item-span-point"></span>
+								<span class="item-span-point"><img src="resources/img/user.png"></span>
+								<span class="viewcont">${Post.viewcnt}</span>
+							</div>
+							<h2 class="title-h2"><a href="#">${Post.title}</a></h2>
+							<p class="title-p">${Post.content}</p>
+							<a href="#" class="item-readmove">Read</a>						
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 		</main>

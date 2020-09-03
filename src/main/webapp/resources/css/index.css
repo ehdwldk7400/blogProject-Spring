@@ -5,7 +5,6 @@ main{
 }
 .main-group{
     max-width: 66.875rem; margin: 0 auto;
-    border: 1px solid #000;
     height: auto;
 }
  
@@ -14,7 +13,7 @@ main{
 .header-ul li{ font-size: 18px; width: 4rem; height: auto; text-align: center; }
 
 /* 프로필 및 태그 설정 영역 */
-.pro-tag{ width: calc(33.3% - 1.25rem); height: auto; }
+.pro-tag{ width: calc(36.6% - 1.25rem); height: auto; }
 .in-group{ padding: 2.5rem; position: relative; margin-right: 1.875rem; }
 .in-group::after{
     background: linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff);
@@ -49,12 +48,12 @@ main{
 
 /* 메인 컨텐츠 영역 */
 .main-text{
-    border: 1px solid #000;
+ 
     width: calc(68.6% - .625rem);
 }
 .in-cont{
     padding: 2.5rem 2.1875rem;
-    border: 1px solid #000;
+
 }
 .title-tag{
     font-size: 2.5rem;
@@ -62,19 +61,19 @@ main{
     line-height: 3.25rem;
     margin-bottom: 3.35625rem;
 }
-.cont-item{
+.cont-in-list{
     margin-bottom: 2.03125rem;
 }
-.item-time{
+.cont-time{
     font-size: .875rem;
     color: #222;
     font-weight: 600;
     text-transform: uppercase;
 }
-.item-span{
+.item-span-point{
     margin: 0 .3125rem;;
 }
-.item-span a{
+.item-sapn a{
     font-size: .875rem;
     color: #f7a046;
     font-weight: 600;
@@ -91,10 +90,19 @@ main{
     margin-bottom: 1.21875rem;
 
 }
-.item_readmove{
+.item-readmove{
     font-size: 1rem;
     color: #5d93ff;
 }
+
+.viewcont{
+    font-size: .825rem;
+    color: #b6b6b6;
+}
+.item-span-point img{
+	    width: 15px; height: 15px;
+}
+/* 모달창 구현
 
 /* 모달창 구현 */
 

@@ -2,6 +2,7 @@ package com.jin.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jin.doamin.tagVO;
 import com.jin.doamin.usersVO;
+import com.jin.service.PostService;
 import com.jin.service.TagService;
 import com.jin.service.UserService;
 
@@ -32,6 +34,9 @@ public class HomeController {
 	@Autowired
 	TagService Tagservice;
 	
+	@Autowired
+	PostService postservice;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -43,6 +48,12 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		logger.info("Tag List : " + Tagservice.tagList() );
 		model.addAttribute("tag",Tagservice.tagList());
+		
+	
+		
+		logger.info("post get... : " + postservice.postList());
+		model.addAttribute("post", postservice.postList());
+		
 		
 		
 //		Date date = new Date();
