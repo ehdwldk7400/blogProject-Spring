@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main-group{
+    max-width: 100.875rem; margin: 0 auto;
+    /* border: 1px solid #000; */
+  
+}
+
+.headline{
+    margin-top: 5%;
+    display: flex;
+}
+.title{
+    padding: 1.5rem;
+    width: 70%;
+    font-size: 30px;
+    display: block;
+    /* border-bottom: 1px solid #777; */
+}
+.tagname{
+    padding: 1.5rem;
+    width: 15%;
+    /* border: 1px solid #000; */
+    font-size: .827rem;
+    display: block;
+    font-weight: 600;
+}
+.submit{
+    padding: 1.5rem;
+    width: 15%;
+    display: block;
+    background: none;
+    font-size: 2rem;
+    border: 1px solid #e6e6e6;
+    border-radius: 1.25rem;
+    font-weight: 600;
+}
+.submit:hover{
+    transition: all .3s;
+    background: #777;
+    color: #fff;
+}
+
+.note-editor.note-frame{
+    margin-top: 10px;
+    border: none;
+    box-shadow: 10px 10px 10px 10px grey;
+}

@@ -17,6 +17,7 @@
 	<section class="main-group">
 		<header>
 			<ul class="header-ul">
+				<li><a href="/blog/post/postWrite">Write</a></li>
 				<li><a href="/blog/join"> join</a></li>
 				<li><a href="/blog/login"> login</a></li>
 				<li>${login.username }</li>
@@ -84,7 +85,7 @@
 								<span class="item-span-point"><img src="resources/img/user.png"></span>
 								<span class="viewcont">${Post.viewcnt}</span>
 							</div>
-							<h2 class="title-h2"><a href="#">${Post.title}</a></h2>
+							<h2 class="title-h2"><a href="/blog/post/read?bno=${Post.bno}">${Post.title}</a></h2>
 							<p class="title-p">${Post.content}</p>
 							<a href="#" class="item-readmove">Read</a>						
 						</div>

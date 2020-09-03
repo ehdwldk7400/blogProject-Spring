@@ -13,4 +13,10 @@
 		 	]]>
 	</select>
 	
+	<insert id="wirtePost">
+  		insert into post(tagname, title, content) values(#{tagname}, #{title}, #{content});
+  	</insert>
+	<select id="read" resultType="com.jin.doamin.postVO">
+		select * from post where bno = #{bno};
+	</select>
 </mapper>

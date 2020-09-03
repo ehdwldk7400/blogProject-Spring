@@ -19,4 +19,16 @@ public class PostServiceImpl implements PostService {
 		return dao.postList();
 	}
 
+	@Override
+	public void wirtePost(postVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.wirtePost(vo);
+	}
+
+	@Override
+	public postVO read(postVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.read(vo);
+	}
+
 }
