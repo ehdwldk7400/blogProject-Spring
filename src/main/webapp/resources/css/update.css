@@ -23,9 +23,10 @@
     padding: 1.5rem;
     width: 15%;
     /* border: 1px solid #000; */
-    font-size: 2rem;
+    font-size: .827rem;
     display: block;
     font-weight: 600;
+    color: #f7a046;
 }
 .submit{
     padding: 1.5rem;

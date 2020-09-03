@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jin.dao.PostDAO;
 import com.jin.doamin.postVO;
@@ -25,10 +26,18 @@ public class PostServiceImpl implements PostService {
 		dao.wirtePost(vo);
 	}
 
+	@Transactional
 	@Override
 	public postVO read(postVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		dao.postVirecnt(vo);
 		return dao.read(vo);
+	}
+
+	@Override
+	public void updatePost(postVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.updatePost(vo);
 	}
 
 }

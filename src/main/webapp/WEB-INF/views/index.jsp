@@ -32,7 +32,7 @@
 				</div>
 				<nav class="list">
 					<ul>
-						<li><a href="#">All_List</a></li>
+						<li><a href="/blog">All_List</a></li>
 						<li><a href="#">About me</a></li>
 					</ul>
 				</nav>
@@ -55,7 +55,7 @@
 					<p class="modal-title">Tag Title</p>
 					<div class="con">
 						<span>추가할 태그를 입력하세요.</span> <br>
-						<form action="/blog/tag" method="post">
+						<form action="/blog/tag" method="post"  autocomplete="off">
 							<input type="text" name="tagname" id="tagname"> 
 							<input type="submit" value="추가" id="add">
 						</form>
@@ -87,7 +87,7 @@
 							</div>
 							<h2 class="title-h2"><a href="/blog/post/read?bno=${Post.bno}">${Post.title}</a></h2>
 							<p class="title-p">${Post.content}</p>
-							<a href="#" class="item-readmove">Read</a>						
+							<a href="/blog/post/read?bno=${Post.bno }" class="item-readmove">Read</a>						
 						</div>
 					</c:forEach>
 				</div>

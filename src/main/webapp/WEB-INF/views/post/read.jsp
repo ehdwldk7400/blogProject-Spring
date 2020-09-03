@@ -11,11 +11,16 @@
 	
  <link rel="stylesheet" href="../resources/css/Default.css">
 <link rel="stylesheet" href="../resources/css/read.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../resources/js/read.js"></script>
 
 <body>
    <header>
         <a href="/blog">All-List</a>
     </header>
+    
+    <form action="" role="form" id="fr">
+	<input type="hidden" id="bno" name="bno" value="${read.bno }">
     <section class="contents">
         <div class="view-header">
             <h2 class="view-title">${read.title}</h2>
@@ -29,8 +34,8 @@
                 </div>
                 <div class="action">
                     <ul class="action-ul">
-                        <li><a href="#">수정</a></li>
-                        <li><a href="#">삭제</a></li>
+                        <li><a href="#" class="update">수정</a></li>
+                        <li><a href="#" class="delete">삭제</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,6 +44,7 @@
             ${read.content}
         </div>
     </section>
+    </form>
 
 
 </body>

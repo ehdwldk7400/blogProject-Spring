@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.jin.dao.PostDAO"> 
+<mapper namespace="com.jin.dao.PostDAO">
 
 	<select id="postList" resultType="com.jin.doamin.postVO">
 
@@ -12,11 +12,26 @@
 		 		select * from post where bno > 0 order by bno desc
 		 	]]>
 	</select>
-	
+
 	<insert id="wirtePost">
-  		insert into post(tagname, title, content) values(#{tagname}, #{title}, #{content});
-  	</insert>
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select max(bno)+1 bno from post;
+		</selectKey>
+
+		insert into post(tagname, bno, title, content) values(#{tagname}, #{bno}, #{title},
+		#{content});
+	</insert>
 	<select id="read" resultType="com.jin.doamin.postVO">
-		select * from post where bno = #{bno};
+		select * from post where bno =
+		#{bno};
 	</select>
+
+	<update id="postVirecnt">
+		update post set viewcnt = viewcnt+1 where bno=#{bno};
+	</update>
+
+	<update id="updatePost">
+		update post set title = #{title}, content= #{content}
+		where bno = #{bno};
+	</update>
 </mapper>

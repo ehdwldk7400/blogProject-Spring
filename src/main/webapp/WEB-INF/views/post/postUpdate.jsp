@@ -17,7 +17,7 @@
 <!-- include summernote-ko-KR -->
 <script src="../resources/js/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="../resources/css/Default.css">
-<link rel="stylesheet" href="../resources/css/PostWrite.css">
+<link rel="stylesheet" href="../resources/css/update.css">
 <title>글 작성</title>
 <script>
 $(document).ready(function() {
@@ -28,22 +28,19 @@ $(document).ready(function() {
 	        focus: true, 
 	        lang : 'ko-KR'
 	  });
+	  $(".content").summernote('code', '${read.content}');
 	});
 </script>
 </head>
 <body>
    <div class="main-group">
-        <form action="/blog/post/postWrite" method="POST"  autocomplete="off">
+        <form action="/blog/post/postUpdate" method="POST"  autocomplete="off">
+        		<input type="hidden" name="bno" value="${read.bno }">
             <div class="headline">
-                <input type="text" class="title" name="title" placeholder="제목">
+                <input type="text" class="title" name="title" placeholder="제목" value="${read.title}">
                 <!--  -->
-                <select name="tagname" id="tagname" class="tagname">
-                    <option selected="selected" class="tagname">==== TAG 선택 ====</option>
-                    <c:forEach items="${tag}" var="Tag">
-	                    <option class="tagname" value="${Tag.tagname}">${Tag.tagname}</option>
-                    </c:forEach>
-                </select>
-                <input type="submit" value="작성" class="submit" onclick="location.href='/blog'">
+             	<input type="text" class="tagname" name="tagname" value="${read.tagname}" readonly style='font-size:2rem'>
+                <input type="submit" value="작성" class="submit">
             </div>
             <textarea name="content" id="summernote" class="content"></textarea>
         </form>

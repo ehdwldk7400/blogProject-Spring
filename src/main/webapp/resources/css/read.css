@@ -61,7 +61,20 @@ header a{
 }
 
 .view-body{
-    margin: 35px 0;
+	 position: relative;
+    padding: 35px 0;
+    margin-bottom: 35px;
+}
+.view-body:after{
+
+	 position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 1px;
+    background-color: #eaecef;
+    content: "";
 }
 .img img{
 	width: 15px;

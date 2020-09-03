@@ -36,7 +36,7 @@ public class PostController {
 		
 		Postservice.wirtePost(vo);
 		
-		return "redirect:/";
+		return "redirect:read?bno="+vo.getBno();
 	}
 	
 	@RequestMapping(value = "read", method = RequestMethod.GET)
@@ -44,6 +44,22 @@ public class PostController {
 		logger.info("read get... " + vo);
 		
 		model.addAttribute("read", Postservice.read(vo));
+	}
+	
+	@RequestMapping(value = "postUpdate", method = RequestMethod.GET)
+	public void getUpdatePost(postVO vo, Model model ) throws Exception {
+		model.addAttribute("read", Postservice.read(vo));
+		model.addAttribute("tag", Tagservice.tagList());
+		logger.info("update get..." + vo);
+		
+	}
+	@RequestMapping(value = "postUpdate", method = RequestMethod.POST)
+	public String postUpdatePost(postVO vo) throws Exception {
+		
+		logger.info("update post..." + vo);
+		Postservice.updatePost(vo);
+		
+		return "redirect:read?bno="+vo.getBno();
 	}
 	
 }
