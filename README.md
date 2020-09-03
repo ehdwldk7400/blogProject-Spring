@@ -17,5 +17,5 @@
   - HTML
   - CSS
   - JavaScript & JQuery
-  - MYSQL
+  - My_SQL
   - 
