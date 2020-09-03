@@ -16,6 +16,6 @@
   - JSP
   - HTML
   - CSS
-  - JQuery
+  - JAVAscript & JQuery
   - MYSQL
   - 
