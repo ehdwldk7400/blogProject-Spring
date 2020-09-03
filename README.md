@@ -7,3 +7,15 @@
   - 개발기간 : 2020. 09. 03  ~ 2020. 09. 00
   - 개발인원 : 1 Front-End, Back-End
   
+
+ # 데모
+ 
+ 
+ # 적용 기술
+  - Spring4 Framework
+  - JSP
+  - HTML
+  - CSS
+  - JQuery
+  - MYSQL
+  - 
