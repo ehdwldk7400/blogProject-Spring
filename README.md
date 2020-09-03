@@ -1,6 +1,6 @@
 # Introduction
  - Spring 기본적인 CRUD Blog 포토폴리오입니다.
- 
+ - Back-End 구현을 위한 Font단은 클론 코딩입니다.
  
  
  # 개발 인원 및 기간
