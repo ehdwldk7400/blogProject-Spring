@@ -10,7 +10,7 @@ fieldset, form, legend, label,
 table, caption, thead, tbody, tfoot, tr, th, td,
 ul, ol, li, a, input, select, textarea {margin: 0;padding: 0; border: 0 none; }
 
-body {font-family: MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial; font-size: 1rem; line-height: 1.625;color: #333;}
+body {font-family: 'Noto Sans KR', sans-serif, MalgunGothic, '맑은 고딕','돋움', Dotum, AppleGothic, Sans-serif, Arial; font-size: 1rem; line-height: 1.625;color: #333;}
 
 ul, ol, li {list-style: none;}
 em, address {font-style: normal;}
@@ -35,4 +35,8 @@ input[type=submit]{
 button{
     cursor: pointer;
 }
+input::placeholder{color:#a5a8b1; font-size: .925rem; font-weight: 600;}
+input::-webkit-input-placeholder {color:#a5a8b1;font-size: .925rem; font-weight: 600;}
+input:-ms-input-placeholder{color:#a5a8b1; font-size: .925rem; font-weight: 600;}
+
     
