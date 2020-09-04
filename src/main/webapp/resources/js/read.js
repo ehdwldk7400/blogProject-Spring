@@ -11,8 +11,8 @@ $(document).ready(function(){
 		formObj.attr('method','get');
 		formObj.submit();
 	});
-	$(".btn-danger").on("click",function(){
-		formObj.attr("action","/jin/board/delete");
+	$(".delete").on("click",function(){
+		formObj.attr("action","/blog/post/postDelete");
 		formObj.attr('method','post');
 		formObj.submit();
 	});

@@ -40,4 +40,10 @@ public class PostServiceImpl implements PostService {
 		dao.updatePost(vo);
 	}
 
+	@Override
+	public void deletePost(postVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.deletePost(vo);
+	}
+
 }

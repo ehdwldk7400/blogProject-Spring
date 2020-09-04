@@ -29,3 +29,10 @@ a:hover, a:focus, a:active {text-decoration: underline;}
 
 input:focus {outline:none;  -webkit-box-shadow: 0 0 0 1000px white inset;}
 
+input[type=submit]{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+    

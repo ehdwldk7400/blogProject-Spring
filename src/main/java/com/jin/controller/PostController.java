@@ -62,4 +62,12 @@ public class PostController {
 		return "redirect:read?bno="+vo.getBno();
 	}
 	
+	@RequestMapping(value = "postDelete", method = RequestMethod.POST)
+	public String postDeletePost(postVO vo) throws Exception{
+		
+		logger.info("postDelete VO : " + vo);
+		Postservice.deletePost(vo);
+		
+		return "redirect:/";
+	}
 }

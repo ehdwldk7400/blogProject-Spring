@@ -1,0 +1,185 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #e4e4ec;
+}
+input::placeholder{color:#a5a8b1; font-size: .925rem; }
+input::-webkit-input-placeholder {color:#a5a8b1;font-size: .925rem;}
+input:-ms-input-placeholder{color:#a5a8b1; font-size: .925rem;}
+
+
+#container{
+    padding-top: 110px;
+    height: 100%;
+}
+.inner-box{
+    max-width: 450px;
+    min-height: 637px;
+    padding: 0 20px;
+    padding-bottom: 100px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
+    background-color: #efeff4;
+    margin: 0 auto;
+}
+.header{
+    padding: 45px 0 36px 0;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.5;
+
+}
+header h1 a{
+    color: #334571;
+}
+header h1 a:hover{
+    text-decoration: none;
+}
+.login-wrap{
+    max-width: 365px;
+    margin: 0 auto;
+    width: 100%;
+}
+.input-email{
+    margin-bottom: 8px;
+}
+.input-email input{
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    height: 56px;
+    padding: 15px 40px 17px 16px;
+    color: #334571;
+    border: 1px solid #d6d9e2;
+}
+.input-email input:focus{
+    outline: none;
+    border: 1px solid #7985a2;
+}
+
+.input-passowrd input{
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 100%;
+    height: 56px;
+    padding: 15px 40px 17px 16px;
+    color: #334571;
+    border: 1px solid #d6d9e2;
+}
+.input-passowrd input:focus{
+    outline: none;
+    border: 1px solid #7985a2;
+}
+.iogin-util{
+    padding-top: 13px;
+}
+.btn-wrap{
+    padding-bottom: 19px;
+}
+.btn-wrap input{
+    color: #fff;
+    background-color: #334571;
+    width: 100%;
+    height: 56px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 56px;
+
+}
+.btn-wrap input:hover{
+    background-color: #445a92;
+}
+.account-info{
+    padding-bottom: 38px;
+    text-align: center;
+}
+.account-info li{
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+.account-info-list li:first-child::before{
+    display: none;
+}
+.account-info li a{
+    font-size: .8rem;
+    font-weight: 600;
+    color: #535768;
+}
+.account-info li::before {
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    content: '';
+    display: block;
+    width: 1px;
+    height: 12px;
+    margin-top: -6px;
+    background-color: #535768;
+    opacity: 0.25;
+}
+.login-3ard-party p{
+    margin-top: 8px;
+    height: 56px;
+}
+.login-3ard-party p:first-child{
+    margin-top: 0;
+}
+.login-3ard-party p button{
+    width: 100%;
+    height: 56px;
+    margin: 0 auto;
+    border: 1px solid #d5d9e2;
+    background-color: #ffffff;
+    outline: 0;
+}
+.login-3ard-party p button:hover{
+    border: 1px solid #7985a2;
+}
+.login-3ard-party p button span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:  .8rem;;
+    font-weight: 600;
+    color: #535768;
+}
+.google-login-btn span::before{
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/google-icon.png);
+    background-size: 100% 100%;
+}
+.naver-login-btn span::before{
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/naver-icon.PNG);
+    background-size: 100% 100%;
+}
+.kakao-login-btn span::before{
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/kakao-talk-icon.png);
+    background-size: 100% 100%;
+}
+.footer{
+    padding: 25px 0 !important;
+    width: 100%;
+    margin: 0 auto; 
+}
+.footer p {
+    width: 100%;
+    height: 16px;
+    font-size: 1rem;
+    color: #9398aa;
+    text-align: center;
+}

@@ -16,5 +16,8 @@ public interface PostService {
 	
 	// 게시물 수정
 	public void updatePost(postVO vo) throws Exception;
+	
+	// 게시물 삭제
+	public void deletePost(postVO vo) throws Exception;
 
 }

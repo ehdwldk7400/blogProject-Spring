@@ -34,4 +34,8 @@
 		update post set title = #{title}, content= #{content}
 		where bno = #{bno};
 	</update>
+	
+	<delete id="deletePost">
+		delete from post where bno = #{bno};
+	</delete>
 </mapper>
