@@ -1,0 +1,104 @@
+.container{
+
+    padding-top: 56px;
+    height: 100%;
+}
+.content-section{
+    padding: 0 20px;
+}
+.contents{
+    text-align: center;
+    position: relative;
+    min-height: 3000px;
+    padding-top: 60px;
+    max-width: 440px;
+    margin: 0 auto;
+}
+.content-header{
+    margin-bottom: 40px;
+}
+.contents h1.title{
+    font-size: 28px;
+    color: #535768;
+    font-weight: 600;
+}
+.contents p.desc{
+    margin-top: 15px;
+    font-size: 15px;
+    color: #9398aa;
+    font-weight: 400;
+}
+.btn-wrap{
+    margin-top: 8px !important;
+}
+.btn-wrap:first-child{
+    margin-top: 0;
+}
+.btn-wrap .btn{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    font-size: 15px;
+    color: #535768;
+    border: 1px solid #d5d9e2;
+    background: #fff;
+}
+.btn-wrap a{
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-wrap .or{
+    margin: 20px 0;
+    opacity: .5;
+    font-size: 14px;
+    color: #535768;
+}
+.btn-wrap span{
+
+}
+.btn-wrap .join span::before{
+    display: inline-block;
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/blog.png);
+    background-size: 100% 100%;
+}
+
+.google-login-btn span::before{
+    display: inline-block;
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/google-icon.png);
+    background-size: 100% 100%;
+}
+.naver-login-btn span::before{
+    display: inline-block;
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/naver-icon.PNG);
+    background-size: 100% 100%;
+}
+.kakao-login-btn span::before{
+    display: inline-block;
+    content: '';
+    width: 16px !important; 
+    height: 16px !important;
+
+    margin-right: 8px;
+    background-image: url(../img/kakao-talk-icon.png);
+    background-size: 100% 100%;
+}

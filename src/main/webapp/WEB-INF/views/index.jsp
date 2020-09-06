@@ -18,7 +18,7 @@
 		<header>
 			<ul class="header-ul">
 				<li><a href="/blog/post/postWrite">Write</a></li>
-				<li><a href="/blog/join"> join</a></li>
+				<li><a href="/blog/signup"> join</a></li>
 				<li><a href="/blog/login"> login</a></li>
 				<li>${login.username }</li>
 			</ul>

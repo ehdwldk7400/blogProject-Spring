@@ -71,6 +71,14 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public void getsignup() {
+		logger.info("getsignup....");
+	}
+	
+	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public ModelAndView getjoin() {
 		logger.info("회원가입 페이지 이동");
@@ -86,10 +94,11 @@ public class HomeController {
 
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public void postjoin(usersVO vo) throws Exception {
+	public String postjoin(usersVO vo) throws Exception {
 		
 		logger.info("PostJoin VO : " + vo);
 		service.createUser(vo);
+		return "redirect:/";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void getlogin() {

@@ -94,6 +94,7 @@ $(document).ready(function () {
     		$("#confirm").addClass('invalid');
     		$("#confirm").text("비밀번호가 일치하지 않습니다.");    
     		$("#pw-icon").css("display", "none");
+    		$("#username").attr('disabled', 'disabled');
     	}else{
     		$("#pw-confirm").removeClass('invalid');
     		$("#confirm").removeClass('invalid');
@@ -111,6 +112,10 @@ $(document).ready(function () {
     		$("#men").removeAttr('disabled', 'disabled');
     		$("#girl").removeAttr('disabled', 'disabled');
     		$("#submit").removeAttr('disabled', 'disabled');
+    	}else{
+    		$("#men").attr('disabled', 'disabled');
+    		$("#girl").attr('disabled', 'disabled');
+    		$("#submit").attr('disabled', 'disabled');
     	}
     });
     
