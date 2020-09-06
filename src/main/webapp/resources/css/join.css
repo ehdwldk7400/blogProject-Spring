@@ -68,6 +68,7 @@ body{
     width: auto;
 }
 .btn-warp{
+	
     margin-top: 30px;
     width: auto;
 }
@@ -133,7 +134,7 @@ a.btn-link{
     background-color: #efeff4;
     border: 1px solid #d5d9e2;
 }
-.input-group input.inalid{
+.input-group input.invalid{
     border: 1px solid #da3c31;
 }
 .input-group .msg.invalid {
@@ -168,6 +169,60 @@ a.btn-link{
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.btn-reset{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0; right: 10px;
+    z-index: 999;
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+}
+.btn-reset button{
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.btn-reset button::before{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 64%;
+    height: 1px;
+    margin-top: -1px;
+    background: #b9bcc6;
+        transform: rotate(45deg);
+}
+.btn-reset button::after{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 64%;
+    height: 1px;
+    margin-top: -1px;
+    background: #b9bcc6;
+    transform: rotate(-45deg);
+}
+
+.success-text{
+    color: #378ff1;
+}
+
+
 .msg{
     display: inline-block;
     width: 100%;
@@ -203,4 +258,52 @@ a.btn-link{
     background-color: #d1d1de;
     cursor: default;
     color: #fff;
+}
+
+/* modal설정영역 */
+.modal-container{
+    display: none;
+}
+#modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    background: rgba(0,0,0,0.3);
+}
+.modal-content{
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    min-height: auto;
+    background: #fff;
+}
+.modal-content .content{
+    padding: 30px;
+    text-align: center;
+}
+.content h2.title{
+    font-size: 15px;
+    color: #535768;
+    margin-bottom: 8px;
+}
+.modal-content .text{
+    font-size: 15px;
+    color: #535768;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.modal-content .actions a{
+    text-align: center;
+    display: block;
+    widows: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #4998f1;
+    text-decoration: none;
 }

@@ -24,4 +24,10 @@ public class UserServiceImpl implements UserService {
 		return dao.login(vo);
 	}
 
+	@Override
+	public int idchk(usersVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.idchk(vo);
+	}
+
 }

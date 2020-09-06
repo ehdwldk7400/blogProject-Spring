@@ -13,5 +13,9 @@
 	<select id="login" resultType="com.jin.doamin.usersVO">
 		select userid, userpw, username from users where userid=#{userid} and userpw=#{userpw};
 	</select>
+	
+	<select id="idchk" resultType="int">
+		select count(*) from users where userid = #{userid}
+	</select>
 
 </mapper>

@@ -10,4 +10,7 @@ public interface UserDAO {
 	// Login 
 	public usersVO login(usersVO vo) throws Exception;
 	
+	// ID Cheack
+	public int idchk(usersVO vo) throws Exception;
+	
 }

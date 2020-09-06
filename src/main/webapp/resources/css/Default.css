@@ -32,8 +32,10 @@ input:focus {outline:none;  -webkit-box-shadow: 0 0 0 1000px white inset;}
 input[type=submit]{
     cursor: pointer;
 }
-button{
+button:focus{
     cursor: pointer;
+    outline: 0;
+    
 }
 input::placeholder{color:#a5a8b1; font-size: .925rem; font-weight: 600;}
 input::-webkit-input-placeholder {color:#a5a8b1;font-size: .925rem; font-weight: 600;}
