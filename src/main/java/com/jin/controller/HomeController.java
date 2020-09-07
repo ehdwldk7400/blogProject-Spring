@@ -57,8 +57,8 @@ public class HomeController {
 		
 	
 		
-		logger.info("post get... : " + postservice.postList());
-		model.addAttribute("post", postservice.postList());
+//		logger.info("post get... : " + postservice.postList());
+//		model.addAttribute("post", postservice.postList());
 		
 		
 		

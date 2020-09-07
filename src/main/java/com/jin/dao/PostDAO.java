@@ -2,6 +2,8 @@ package com.jin.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.jin.doamin.postVO;
 
 public interface PostDAO {
@@ -23,5 +25,12 @@ public interface PostDAO {
 	
 	// 게시물 삭제
 	public void deletePost(postVO vo) throws Exception;
+	
+	// Tag 리스트
+	public List<postVO> tagList(postVO vo) throws Exception;
+	
+	// 게시물 페이징
+	public List<postVO> postPaging(@Param("pageNum")int pageNum, @Param("amount")int amount) throws Exception;
+
 
 }

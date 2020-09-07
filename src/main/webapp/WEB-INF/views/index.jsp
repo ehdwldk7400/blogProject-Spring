@@ -64,7 +64,10 @@
 				<div class="tag">
 					<ul class="tag-ul">
 					<c:forEach items="${tag}" var="Tag">
-						<li><a href="/blog/board?=${Tag.tagname}">${Tag.tagname}</a></li>
+						<li>
+							<a id="${Tag.tagname}" href="#">${Tag.tagname}</a>
+							<input type="hidden" class="${Tag.tagname}" value="${Tag.tagname}">	
+						</li>
 					</c:forEach>
 					</ul>
 				</div>
@@ -73,24 +76,18 @@
 		<!-- 콘텐츠 영역 -->
 		<div class="main-text">
 			<div class="in-cont">
-				<h1 class="title-tag">All_list</h1>
-				<div class="cont-list">
-					<c:forEach items="${post}" var="Post">
-						<div class=cont-in-list>
-							<div class="cont-item">
-								<time class="cont-time" datetime="${Post.regdate}">${Post.regdate}</time>
-								<span class="item-span-point"></span>
-								<span class="item-sapn"><a>${Post.tagname }</a></span>
-								<span class="item-span-point"></span>
-								<span class="item-span-point"><img src="resources/img/user.png"></span>
-								<span class="viewcont">${Post.viewcnt}</span>
-							</div>
-							<h2 class="title-h2"><a href="/blog/post/read?bno=${Post.bno}">${Post.title}</a></h2>
-							<p class="title-p">${Post.content}</p>
-							<a href="/blog/post/read?bno=${Post.bno }" class="item-readmove">Read</a>						
+				<div class="title-mouse">
+					<h1 class="title-tag">All_list</h1>
+					<div class="mouse-wheel">
+						<div class="mouse">
+							<div class="wheel"></div>
 						</div>
-					</c:forEach>
+						<div><span class="arrow"></span></div>
+					</div>
 				</div>
+						<div class="cont-list">
+							<!-- 게시시판 리스트 표시 영역 -->
+						</div>
 			</div>
 		</div>
 		</main>

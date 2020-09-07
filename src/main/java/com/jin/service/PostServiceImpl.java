@@ -46,4 +46,16 @@ public class PostServiceImpl implements PostService {
 		dao.deletePost(vo);
 	}
 
+	@Override
+	public List<postVO> tagList(postVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.tagList(vo);
+	}
+
+	@Override
+	public List<postVO> postPaging(int pageNum, int amount) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.postPaging(pageNum, amount);
+	}
+
 }

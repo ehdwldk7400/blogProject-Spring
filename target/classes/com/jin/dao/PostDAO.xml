@@ -7,7 +7,6 @@
 <mapper namespace="com.jin.dao.PostDAO">
 
 	<select id="postList" resultType="com.jin.doamin.postVO">
-
 		 	<![CDATA[
 		 		select * from post where bno > 0 order by bno desc
 		 	]]>
@@ -38,4 +37,18 @@
 	<delete id="deletePost">
 		delete from post where bno = #{bno};
 	</delete>
+	
+	<select id="tagList" resultType="com.jin.doamin.postVO">
+		select * from post where tagname = #{tagname} and bno > 0 order by bno desc
+	</select>
+	
+	<select id="postPaging" resultType="com.jin.doamin.postVO">
+		select * from (
+			select @rownum:= @rownum +1 as rownum, b.* from (select @rownum:=0) as tmp, post as b
+			order by bno desc) as postlist 
+			
+			<![CDATA[
+				where rownum > (1-1) * #{amount} and rownum <= #{pageNum} * #{amount}		
+			]]>
+	</select>
 </mapper>

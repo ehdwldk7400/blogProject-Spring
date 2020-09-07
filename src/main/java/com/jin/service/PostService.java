@@ -20,4 +20,11 @@ public interface PostService {
 	// 게시물 삭제
 	public void deletePost(postVO vo) throws Exception;
 
+	// Tag 리스트
+	public List<postVO> tagList(postVO vo) throws Exception;
+	
+	// 게시물 페이징
+	public List<postVO> postPaging(int pageNum, int amount) throws Exception;
+
+
 }

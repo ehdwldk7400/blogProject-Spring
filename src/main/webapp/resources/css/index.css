@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+body{
+	height: 100vh;
+}
+
 a:hover{
 	color:#5d93ff;
 }
@@ -17,7 +21,7 @@ main{
 .header-ul li{ font-size: 18px; width: 4rem; height: auto; text-align: center; }
 
 /* 프로필 및 태그 설정 영역 */
-.pro-tag{ width: calc(36.6% - 1.25rem); height: auto; }
+.pro-tag{ max-width: calc(36.6% - 1.25rem); height: auto; }
 .in-group{ padding: 2.5rem; position: relative; margin-right: 1.875rem; }
 .in-group::after{
     background: linear-gradient(180deg, #e6e6e6 0, #e6e6e6 48%, #fff);
@@ -49,21 +53,48 @@ main{
     border-radius: 1.25rem; color: #222;
     font-size: 1rem;
 }
+.cont-list{
+		height: auto;
+}
+.cont-in-list{
+	   
+}
 
 /* 메인 컨텐츠 영역 */
 .main-text{
  
     width: calc(68.6% - .625rem);
+    overflow: hidden;
+
 }
 .in-cont{
+	
+	width: 110%;
     padding: 2.5rem 2.1875rem;
-
+     overflow-y: scroll; 
+         height: 100vh;
+     scroll-behavior: smooth;
+     scrollbar-width: none; /* Firefox */
+     -ms-overflow-style: none; /* IE and Edge */
+}
+.in-cont::-webkit-scrollbar{
+	disply:none !important;
+}
+.title-mouse{
+	 display: flex;
+}
+.mouse-wheel{
+	 margin-left: 10rem;
 }
 .title-tag{
     font-size: 2.5rem;
     font-weight: 600;
     line-height: 3.25rem;
     margin-bottom: 3.35625rem;
+}
+.title-p h4{
+	font-size: 1rem;
+	 font-weight: 100;
 }
 .cont-in-list{
     margin-bottom: 2.03125rem;
@@ -166,4 +197,138 @@ main{
 .button{
     font-size: .825rem;
     margin-left: 1rem;
+}
+
+
+/* 마우스 휠 그림 영역 */
+.arrow {
+  display: block;
+  -ms-transform: rotate(45deg);  /* IE 9 */
+  -webkit-transform: rotate(45deg);  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  margin: 5px 0 8px 8px;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: mouse-scroll .7s infinite;
+  -moz-animation: mouse-scroll .7s infinite;
+  -webkit-animation-direction: alternate;
+}
+.mouse {
+  height: 42px;
+  width: 24px;
+  border-radius: 14px;
+  transform: none;
+  border: 2px solid #000;
+  margin-bottom: 6px;
+}
+.wheel {
+  height: 5px;
+  width: 2px;
+  display: block;
+  margin: 5px auto;
+  background: white;
+  position: relative;
+  height: 4px;
+  width: 4px;
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+.wheel {
+  -webkit-animation: mouse-wheel 1.5s linear infinite;
+  -moz-animation: mouse-wheel 1.5s linear infinite;
+}
+@-webkit-keyframes mouse-wheel {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+@-moz-keyframes mouse-wheel {
+  0% {
+    top: 1px;
+  }
+  25% {
+    top: 2px;
+  }
+  50% {
+    top: 6px;
+  }
+  75% {
+    top: 2px;
+  }
+  100% {
+    top: 1px;
+  }
+}
+@-webkit-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  25% {
+   opacity: .25;
+  }
+  50% {
+    opacity: .5;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  25% {
+   opacity: .25;
+  }
+  50% {
+    opacity: .5;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes mouse-scroll {
+  0% {
+    opacity: 0;
+  }
+  25% {
+   opacity: .25;
+  }
+  50% {
+    opacity: .5;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 1;
+  }
 }

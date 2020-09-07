@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
 }
+input::placeholder{color:#a5a8b1; font-size: 1.5rem; font-weight: 600;}
 body{
 	backgroud-color: #e4e4ec;
 }
@@ -23,7 +24,7 @@ body{
     /* border-bottom: 1px solid #777; */
 }
 .tagname{
-    padding: 1.5rem;
+    padding: .825rem;
     width: 15%;
     /* border: 1px solid #000; */
     font-size: 2rem;
