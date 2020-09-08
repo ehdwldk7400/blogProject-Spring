@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jin.doamin.ReplyVO;
 import com.jin.service.ReplyService;
@@ -45,5 +46,21 @@ public class ReplyController {
 	public ResponseEntity<Integer> getReplyCnt(@PathVariable("bno") int bno) throws Exception{
 		
 		return new ResponseEntity<Integer>(Reservice.replycnt(bno), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "ReplyCreate", method = RequestMethod.POST)
+	public ModelAndView getCreate(ReplyVO vo, ModelAndView mav)throws Exception {
+		
+		mav = new ModelAndView();
+		
+		logger.info("ReplyCreate POST.....");
+		logger.info("ReplyCreate vo : " + vo);
+		
+		Reservice.rePlycreate(vo);
+		
+		mav.setViewName("redirect:/post/read?bno="+vo.getBno());
+		logger.info("ReplyCreate mav : " + mav);
+		
+		return mav;
 	}
 }

@@ -25,6 +25,13 @@ public class ReplyServiceImpl implements ReplyService {
 		// TODO Auto-generated method stub
 		return dao.replycnt(bno);
 	}
+
+	@Override
+	public void rePlycreate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+		dao.rePlycreate(vo);
+	}
 	
 
 }

@@ -21,9 +21,9 @@
         <a href="/blog">All-List</a>
     </header>
     
-    <form action="" role="form" id="fr">
-	<input type="hidden" id="bno" name="bno" value="${read.bno }">
     <section class="contents">
+   <form action="" role="form" id="fr">
+	<input type="hidden" id="bno" name="bno" value="${read.bno }">
         <div class="view-header">
             <h2 class="view-title">${read.title}</h2>
             <div class="header-group">
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+         </form>
         <div class="view-body">
             ${read.content}
         </div>
@@ -51,34 +52,34 @@
                     <span class="reply-number"></span>
                 </div>
                 <div class="reply-contents">
-                    <form action="#">
+               <form action="/blog/reply/ReplyCreate" method="post">
+                	 <input type="hidden" id="bno" name="bno" value="${read.bno}">
+                   	 <input type="hidden" id="replyer" name="replyer" value="test">
                         <div class="content-text">
-                            <textarea name="replycontent" id="replycontent" placeholder="댓글을 남겨주세요."></textarea>
+                            <textarea name="replytext" id="replycontent" placeholder="댓글을 남겨주세요."></textarea>
                             <div class="submit-btn">
                                 <button type="submit" class="reply-btn">댓글남기기</button>
                             </div>
                         </div>
                         <div class="checkbox">
                             <label for="Y" class="ck-radio">
-                                <input type="radio" id="Y" name="public" value="공개" checked>
+                                <input type="radio" id="Y" name="open" value="Y" checked>
                                 <span>공개</span>
                             </label>
                             <label for="N" class="ck-radio">
-                                <input type="radio" id="N" name="public" value="비공개">
+                                <input type="radio" id="N" name="open" value="N">
                                 <span>비공개</span>
                             </label>
                         </div>
-                    </form>
+      			</form>
                 </div>
-            </div>
+            </div><!-- reply-container -->
             <div class="replylist-container">
                 <ul class="reply-list">
                    
                 </ul>
             </div>
     </section>
-    </form>
-
 
 </body>
 

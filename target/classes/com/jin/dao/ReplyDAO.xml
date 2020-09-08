@@ -15,5 +15,9 @@
 	<select id="replycnt" resultType="int">
 			select count(*) from post_reply where bno = #{bno};
 	</select>
+	
+	<insert id="rePlycreate">
+		insert into post_reply(bno, replytext, replyer, open) values(#{bno}, #{replytext}, #{replyer}, #{open})
+	</insert>
 
 </mapper>

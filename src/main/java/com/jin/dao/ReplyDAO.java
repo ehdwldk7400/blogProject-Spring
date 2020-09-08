@@ -11,4 +11,8 @@ public interface ReplyDAO {
 	
 	//전체 댓글 수
 	public int replycnt(int bno) throws Exception;
+	
+	// 댓글 쓰기
+	public void rePlycreate(ReplyVO vo) throws Exception;
+
 }
