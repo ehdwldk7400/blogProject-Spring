@@ -61,7 +61,7 @@ $(document).ready(function () {
 
  
     	 var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    	 
+    	 var s;
     	 console.log(pw);
     	 console.log(reg.test(pw));
     		if(false === reg.test(pw)) {
