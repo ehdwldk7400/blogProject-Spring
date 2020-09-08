@@ -64,6 +64,7 @@ $(document).ready(function () {
 	});
 	
 
+
 });
 
 function openModal(modalname) {

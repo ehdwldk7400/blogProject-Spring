@@ -1,0 +1,151 @@
+
+.reply-container{
+    margin-bottom: 30px;
+}
+.reply-count{
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.reply-text{
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+}
+.reply-number{
+    font-size: 24px;
+    color: #5d93ff;
+}
+.content-text{
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid #e1e4e5;
+    background-color: #fafafa;
+    position: relative;
+}
+#replycontent{
+    
+    width: 100%;
+    height: 100px;
+    resize: none;
+    display: block;
+    margin: 0;
+    vertical-align: middle;
+    color: #4a4a4a;
+    line-height: normal;
+    background-color: transparent;
+    border-color: transparent;
+    outline: 0;
+    padding: .5rem .7rem;
+    padding-right: 100px;
+}
+#replycontent:focus{
+  /*   border: 2px solid #5d93ff; */
+}
+
+.checkbox{
+    padding-top: 10px;
+}
+.ck-radio input[type="radio"]{
+    display: none;
+}
+.ck-radio input[type="radio"] + span{
+    display: inline-block;
+    background: none;
+    border: 1px solid #d5d9e2;
+    padding:  0 10px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+.ck-radio input[type="radio"]:checked + span{
+    border: 1px solid #5d93ff;
+    background: #5d93ff;
+    color: #fff;
+}
+.submit-btn{
+    position: static;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+.reply-btn{
+    height: 100px;
+    width: 100px;
+    background-color: #5d93ff;
+    color: #fff;
+    outline: 0;
+    border: 2px solid #5d93ff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* 리스트 설정 영역 */
+
+.cng-container{
+    padding: 25px 0 25px 65px;
+    position: relative;
+}
+.reply-content{
+    border-bottom: 1px solid #eaeaec;
+}
+.reply{
+    margin-right: 25px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.link{
+    display: inline-block;
+    margin-left: 8px;
+    color: #4a4a4a;
+    text-decoration: none;
+}
+.blog-icon{
+    position: absolute;
+    background: url("../img/blogicon.png") no-repeat center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: -1px -1px 1px #fff, 1px 1px 1px #fff;
+    top: 25px;
+    left: 0;
+}
+.reply-name{
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 20px;
+}
+.reply-time{
+    margin-left: 8px;
+    color: #b3b3b3;
+    font-size: .85em;
+}
+.cng-content{
+    margin-top: 10px;
+}
+.speech{
+    font-size: .9em;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -.5px;
+}
+.speech span{
+    display: block;
+}
+.btn-init{
+    margin-top: 10px;
+    padding: 2px 5px;
+    font-size: .95em;
+    background-color: #f5f5f5;
+    outline: 0;
+    border: 1px solid #d5d9e2;
+    color: #5d93ff;
+}

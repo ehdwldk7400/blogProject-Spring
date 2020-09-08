@@ -11,8 +11,10 @@
 	
  <link rel="stylesheet" href="../resources/css/Default.css">
 <link rel="stylesheet" href="../resources/css/read.css">
+<link rel="stylesheet" href="../resources/css/reply.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../resources/js/read.js"></script>
+<script src="../resources/js/reply.js"></script>
 
 <body>
    <header>
@@ -43,6 +45,37 @@
         <div class="view-body">
             ${read.content}
         </div>
+             <div class="reply-container">
+                <div class="reply-count">
+                    <span class="reply-text">댓글</span>
+                    <span class="reply-number"></span>
+                </div>
+                <div class="reply-contents">
+                    <form action="#">
+                        <div class="content-text">
+                            <textarea name="replycontent" id="replycontent" placeholder="댓글을 남겨주세요."></textarea>
+                            <div class="submit-btn">
+                                <button type="submit" class="reply-btn">댓글남기기</button>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label for="Y" class="ck-radio">
+                                <input type="radio" id="Y" name="public" value="공개" checked>
+                                <span>공개</span>
+                            </label>
+                            <label for="N" class="ck-radio">
+                                <input type="radio" id="N" name="public" value="비공개">
+                                <span>비공개</span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="replylist-container">
+                <ul class="reply-list">
+                   
+                </ul>
+            </div>
     </section>
     </form>
 

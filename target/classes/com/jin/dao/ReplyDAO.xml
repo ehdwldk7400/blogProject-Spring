@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jin.dao.ReplyDAO">
+
+	<select id="list" resultType="com.jin.doamin.ReplyVO">
+		 	<![CDATA[
+		 		select * from post_reply where bno=#{bno} and rno > 0 order by rno desc; 
+		 	]]>
+	</select>
+	
+	<select id="replycnt" resultType="int">
+			select count(*) from post_reply where bno = #{bno};
+	</select>
+
+</mapper>
