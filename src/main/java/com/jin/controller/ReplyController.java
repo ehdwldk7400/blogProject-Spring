@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jin.doamin.Criteria;
+import com.jin.doamin.ReplyPageVO;
 import com.jin.doamin.ReplyVO;
 import com.jin.service.ReplyService;
+import com.sun.org.glassfish.gmbal.ParameterNames;
 
 @RestController
 @RequestMapping(value="reply")
@@ -41,6 +44,17 @@ public class ReplyController {
 		logger.info("ReplyList list : "+Reservice.list(bno));	
 		
 		return new ResponseEntity<List<ReplyVO>>(Reservice.list(bno), HttpStatus.OK);
+	}
+	@RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
+	public ResponseEntity<ReplyPageVO> list(@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
+		
+		logger.info("list bno, page : " + bno +", " + page );
+		Criteria cri = new Criteria(page, 10);
+		logger.info("list cri : " + cri );
+		logger.info("list listpage : " + Reservice.listPage(bno, cri) );
+		
+		
+		return new ResponseEntity<ReplyPageVO>(Reservice.listPage(bno, cri), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "ReplyCnt/{bno}", method = RequestMethod.GET)

@@ -1,10 +1,11 @@
 $(document).ready(function(){
 	
 	let bno = $("#bno").val();
+	let page = 1;
 //	console.log(bno);
 //	console.log();
 	
-	getAllList(bno);
+	getAllList(bno, page);
 	getRepltCnt(bno);
 	
 	// 댓글창 테두리 변경
@@ -117,16 +118,19 @@ $(document).ready(function(){
 	
 });
 
-function getAllList(bno){
+function getAllList(bno, page){
 	
-	$.getJSON("/blog/reply/ReplyList/"+bno, function(data){
+	$.getJSON("/blog/reply/"+bno+"/"+page, function(data){
 //		console.log("reply.js");
 //		console.log("data ", data);
 		
 		let str = "";
 		let date = new Date();
 		
-		$(data).each(function(){
+		console.log(data);
+		console.log(data.list);
+		
+		$(data.list).each(function(){
 				date = getFormatDate(this.regdate);
 			str += " <li class='reply-content' data-rno="+ this.rno +">"
 				+"   <input type='hidden' id='rno' value='"+this.rno+"'> "
@@ -153,9 +157,40 @@ function getAllList(bno){
 				+"            </div>"
 				+"        </div>"
 				+"    </li>";
-			$(".reply-list").html(str);
 		});
+		console.log("댓글 수 : ", data.replycnt);
 		
+		let endNum = Math.ceil(page/10.0)*10;
+		let startNum = endNum-9;
+		
+		let prev = startNum > 1;
+		let next = false;
+		
+		if(endNum*10 >= data.replycnt){
+			endNum = Math.ceil(data.replycnt/10.0);
+		}
+		
+		if(endNum*10 < data.replycnt){
+			next = true;
+		}
+		var pagestr="";
+		if(prev){
+			pagestr += "<li><a herf='"+(startNum-1)+"'>PREV</a></li>";
+		}
+		for(let i = startNum; i <= endNum; i++){
+			let active = page == i ? "active" : "";
+			pagestr += "<li calss='page-item" + active + "'><a href="+i+">"+i+"</a></li>";
+		}
+		if(next){
+			pagestr += "<li><a herf='"+(endNum+1)+"'>NEXT</a></li>";
+		}
+		
+		console.log(next);
+		console.log(endNum*10);
+		console.log(data.replycnt);
+		
+		
+		$(".reply-list").html(str);
 	});
 }
 function getRepltCnt(bno){

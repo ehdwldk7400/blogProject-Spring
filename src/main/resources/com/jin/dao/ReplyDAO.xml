@@ -28,7 +28,7 @@
  		update post_reply set replytext = #{replytext}, open = #{open} where rno = #{rno};
  	</update>
  	
- 	<select id="listPage" resultMap="com.jin.doamin.ReplyVO">
+ 	<select id="listPage" resultType="com.jin.doamin.ReplyVO">
  		<![CDATA[
 	 		select * from (
 					select @rownum:=@rownum+1 as rownum, b.* 

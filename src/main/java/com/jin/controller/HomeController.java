@@ -117,7 +117,7 @@ public class HomeController {
 			logger.info("¼¼½Å °ª : " +session.getAttribute("login") );
 			return "redirect:/";
 		}else {
-			return "redirect:/blog/login";
+			return "redirect:/login";
 		}
 	}
 	@RequestMapping(value = "/tag", method = RequestMethod.POST)
