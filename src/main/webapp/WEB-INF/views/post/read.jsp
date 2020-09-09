@@ -68,7 +68,7 @@
                             </label>
                             <label for="N" class="ck-radio">
                                 <input type="radio" id="N" name="open" value="N">
-                                <span>비공개ddd</span>
+                                <span>비공개</span>
                             </label>
                         </div>
       			</form>
