@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,5 +63,40 @@ public class ReplyController {
 		logger.info("ReplyCreate mav : " + mav);
 		
 		return mav;
+	}
+	@RequestMapping(value="/{rno}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> delete(@PathVariable("rno") int rno) throws Exception {
+		ResponseEntity<String> result = null;
+		
+		logger.info("DELETE.....");
+		logger.info("ReplyDelete rno : " + rno);
+		
+		try {
+			Reservice.delete(rno);
+			result = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			result = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		
+		return result;
+	}
+	@RequestMapping(value="/{rno}", method=RequestMethod.PUT)
+	public ResponseEntity<String> replyupdate(@PathVariable("rno") int rno, @RequestBody ReplyVO vo) throws Exception{
+		
+		ResponseEntity<String> result = null;
+		
+		try {
+			vo.setRno(rno);
+			logger.info("Reply Update : "+ vo);
+			Reservice.update(vo);
+			result = new ResponseEntity<String>("success",HttpStatus.OK);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			result = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return result;
 	}
 }

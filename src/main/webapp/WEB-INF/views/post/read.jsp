@@ -56,7 +56,7 @@
                 	 <input type="hidden" id="bno" name="bno" value="${read.bno}">
                    	 <input type="hidden" id="replyer" name="replyer" value="test">
                         <div class="content-text">
-                            <textarea name="replytext" id="replycontent" placeholder="댓글을 남겨주세요."></textarea>
+                            <textarea name="replytext" id="replycontent"class="replycontent" placeholder="댓글을 남겨주세요."></textarea>
                             <div class="submit-btn">
                                 <button type="submit" class="reply-btn">댓글남기기</button>
                             </div>
