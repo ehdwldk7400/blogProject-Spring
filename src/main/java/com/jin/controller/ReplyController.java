@@ -45,6 +45,8 @@ public class ReplyController {
 		
 		return new ResponseEntity<List<ReplyVO>>(Reservice.list(bno), HttpStatus.OK);
 	}
+	
+	// 댓글 리스트 (페이징 후)
 	@RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
 	public ResponseEntity<ReplyPageVO> list(@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
 		

@@ -18,7 +18,7 @@ main{
  
 /* 헤더설정 영역 */
 .header-ul{ display: flex; float: right;  position: absolute;   right: 19%;}
-.header-ul li{ font-size: 18px; width: 4rem; height: auto; text-align: center; }
+.header-ul li{ font-size: 18px; width: auto; height: auto; text-align: center; padding: 8px;}
 
 /* 프로필 및 태그 설정 영역 */
 .pro-tag{ max-width: calc(36.6% - 1.25rem); height: auto; }
@@ -331,4 +331,74 @@ main{
   100% {
     opacity: 1;
   }
+}
+
+.paging-list{
+    margin: 3.25rem 0;
+    display: flex;
+}
+.prev-btn{
+    width: 50%;
+    text-align: left;
+}
+.next-btn{
+    width: 50%;
+    text-align: right;
+}
+.prev{
+    color: #f7a046;
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.next{
+    color: #f7a046;
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.prev:hover{
+    text-decoration: none;
+    color: #5d93ff;
+}
+.next:hover{
+    text-decoration: none;
+    color: #5d93ff;
+}
+
+.disabled{
+    pointer-events: none;
+    color: #bbb;
+}
+.user-profile img{
+	width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.user-profile a {
+	display: inline-block; 
+    height: 45px;
+	line-height: 45px;
+}
+.logout{
+	display: inline-block; 
+    height: 45px;
+	line-height: 45px;
+}
+.logout::before{
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 18px;    
+    border: 1px solid #777;
+     margin-right: 8px;
+}
+
+#loading{
+	display: none;
+}
+#loading img{
+	 width: 100px;
+    height: 100px;
 }

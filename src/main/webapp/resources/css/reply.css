@@ -152,3 +152,42 @@
     border: 1px solid #d5d9e2;
     color: #5d93ff;
 }
+
+
+.paging-list{
+    margin: 3.25rem 0;
+    display: flex;
+}
+.prev-btn{
+    width: 50%;
+    text-align: left;
+}
+.next-btn{
+    width: 50%;
+    text-align: right;
+}
+.prev{
+    color: #f7a046;
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.next{
+    color: #f7a046;
+    font-size: 1.625rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.prev:hover{
+    text-decoration: none;
+    color: #5d93ff;
+}
+.next:hover{
+    text-decoration: none;
+    color: #5d93ff;
+}
+
+.disabled{
+    pointer-events: none;
+    color: #bbb;
+}

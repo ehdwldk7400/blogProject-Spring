@@ -33,7 +33,7 @@
 	 		select * from (
 					select @rownum:=@rownum+1 as rownum, b.* 
 					from (select @rownum:=0) as tmp, post_reply as b 
-					where bno = 161
+					where bno = #{bno}
 			 		order by rno desc
 				) post_reply
 				where rownum > (#{cri.pageNum}-1)* #{cri.amount} 

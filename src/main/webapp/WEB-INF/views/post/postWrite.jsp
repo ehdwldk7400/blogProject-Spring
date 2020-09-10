@@ -22,7 +22,7 @@
 <script>
 $(document).ready(function() {
 	  $('#summernote').summernote({
- 	    	placeholder: 'content',
+			placeholder: 'content',
 	        minHeight: 370,
 	        maxHeight: null,
 	        focus: true, 

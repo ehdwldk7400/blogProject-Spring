@@ -51,4 +51,22 @@
 				where rownum > (1-1) * #{amount} and rownum <= #{pageNum} * #{amount}		
 			]]>
 	</select>
+	
+	<select id="tagPaging" resultType="com.jin.doamin.postVO">
+		 	<![CDATA[
+		 		select * from (
+				select @rownum:=@rownum+1 as rownum, b.* 
+				from (select @rownum:=0) as tmp, post as b 
+				where tagname = #{tagname}
+		 		order by bno desc
+			) post
+			where rownum > (#{cri.pageNum}-1)* #{cri.amount} 
+				and rownum <= #{cri.pageNum} * #{cri.amount}
+        
+		 	]]>
+	</select>
+	
+	<select id="getTotalTag" resultType="int">
+		select count(*) from post where tagname=#{tagname}
+	</select>
 </mapper>

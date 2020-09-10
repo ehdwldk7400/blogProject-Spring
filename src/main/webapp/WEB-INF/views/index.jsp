@@ -17,10 +17,20 @@
 	<section class="main-group">
 		<header>
 			<ul class="header-ul">
-				<li><a href="/blog/post/postWrite">Write</a></li>
+			<c:if test="${empty login}">
 				<li><a href="/blog/signup"> join</a></li>
 				<li><a href="/blog/login"> login</a></li>
-				<li>${login.username }</li>
+			</c:if>
+			<c:if test="${!empty login}">
+				<li class="user-profile">
+					<img src="resources/img/profile.jpg" alt="프로필 사진">
+
+				</li>
+				<li class="user-profile">
+					<a href="#" >${login.username}님</a>
+				</li>
+				<li><a href="/blog/logout" class="logout">logout</a></li>
+			</c:if>
 			</ul>
 		</header>
 		<main>
@@ -34,6 +44,9 @@
 					<ul>
 						<li><a href="/blog">All_List</a></li>
 						<li><a href="#">About me</a></li>
+						<c:if test="${login.verify eq 1}">
+						<li><a href="/blog/post/postWrite">Write</a></li>
+						</c:if>
 					</ul>
 				</nav>
 				<div class="img">
@@ -47,8 +60,9 @@
 					</ul>
 				</div>
 				<div class="tag-list">© All Tag List</div>
-				<a href="javascript:openModal('modal1');" class="button modal-open">Tag
-					Add</a>
+				<c:if test="${login.verify eq 1}">
+					<a href="javascript:openModal('modal1');" class="button modal-open">Tag Add</a>
+				</c:if>
 				<div id="modal" onclick="javascript:offModal();"></div>
 				<div class="modal-con modal1">
 					<a href="javascript:offModal();" class="close">X</a>
@@ -88,7 +102,16 @@
 						<div class="cont-list">
 							<!-- 게시시판 리스트 표시 영역 -->
 						</div>
+						<div id="loading">
+							<img alt="로딩" src="resources/img/loading.gif">
+						</div>
+						<div class="paging-list">
+						
+						
+						</div>
 			</div>
+			
+			
 		</div>
 		</main>
 		<footer> </footer>

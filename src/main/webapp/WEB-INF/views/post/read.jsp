@@ -79,6 +79,14 @@
                    
                 </ul>
             </div>
+             <div class="paging-list">
+                <div class="prev-btn">
+                    <a href="" class="prev">← PREV</a>
+                </div>
+                <div class="next-btn">
+                    <a href="" class="next">→ NEXT</a>
+                </div>
+            </div>
     </section>
 
 </body>

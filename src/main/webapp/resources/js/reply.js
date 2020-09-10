@@ -116,6 +116,23 @@ $(document).ready(function(){
 		
 	});
 	
+	$(document).on("click", ".next", function(e){
+		e.preventDefault();
+		let targetPageNum = $(this).attr('href');
+		
+		page += 1;
+		
+		getAllList(bno, page);
+	});
+	$(document).on("click", ".prev", function(e){
+		e.preventDefault();
+		let targetPageNum = $(this).attr('href');
+		
+		page -= 1;
+		
+		getAllList(bno, page);
+	});
+	
 });
 
 function getAllList(bno, page){
@@ -162,33 +179,38 @@ function getAllList(bno, page){
 		
 		let endNum = Math.ceil(page/10.0)*10;
 		let startNum = endNum-9;
+		console.log("endNum : ", endNum);
+		console.log("page : ", page);
 		
 		let prev = startNum > 1;
 		let next = false;
 		
-		if(endNum*10 >= data.replycnt){
-			endNum = Math.ceil(data.replycnt/10.0);
-		}
-		
+		console.log("endNum*10 : ", endNum*10);
+		console.log("data.replycnt : ", data.replycnt);
 		if(endNum*10 < data.replycnt){
 			next = true;
 		}
-		var pagestr="";
-		if(prev){
-			pagestr += "<li><a herf='"+(startNum-1)+"'>PREV</a></li>";
+
+		if(endNum*10 > data.replycnt){
+			endNum = Math.ceil(data.replycnt/10.0);
+		}	
+		console.log("endNum : ", endNum);
+		
+		if(1 == page){
+			$(".prev").addClass('disabled');
+		}else{
+			$(".prev").removeClass('disabled');
 		}
-		for(let i = startNum; i <= endNum; i++){
-			let active = page == i ? "active" : "";
-			pagestr += "<li calss='page-item" + active + "'><a href="+i+">"+i+"</a></li>";
-		}
-		if(next){
-			pagestr += "<li><a herf='"+(endNum+1)+"'>NEXT</a></li>";
+		if(page == endNum || endNum == 0){
+			$(".next").addClass('disabled');
+		}else{
+			$(".next").removeClass('disabled');
 		}
 		
-		console.log(next);
-		console.log(endNum*10);
-		console.log(data.replycnt);
-		
+		$(".next").attr('href', page);
+		$(".prev").attr('href', page);
+		console.log("next : ",next);
+		console.log("endNum*10 : ", endNum*10);
 		
 		$(".reply-list").html(str);
 	});

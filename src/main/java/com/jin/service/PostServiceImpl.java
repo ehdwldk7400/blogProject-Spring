@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jin.dao.PostDAO;
+import com.jin.doamin.Criteria;
+import com.jin.doamin.ReplyPageVO;
+import com.jin.doamin.postPageVO;
 import com.jin.doamin.postVO;
 
 @Service
@@ -52,10 +55,24 @@ public class PostServiceImpl implements PostService {
 		return dao.tagList(vo);
 	}
 
+
+
+	@Override
+	public int getTotalTag(String tagname) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.getTotalTag(tagname);
+	}
+
 	@Override
 	public List<postVO> postPaging(int pageNum, int amount) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.postPaging(pageNum, amount);
+	}
+
+	@Override
+	public postPageVO tagPaging(Criteria cri, String tagname) throws Exception {
+		// TODO Auto-generated method stub
+		return new postPageVO(dao.tagPaging(cri, tagname), dao.getTotalTag(tagname));
 	}
 
 }

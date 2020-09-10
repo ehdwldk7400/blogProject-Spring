@@ -10,9 +10,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jin.doamin.Criteria;
+import com.jin.doamin.ReplyPageVO;
+import com.jin.doamin.postPageVO;
 import com.jin.doamin.postVO;
 import com.jin.service.PostService;
 import com.jin.service.TagService;
@@ -97,6 +101,8 @@ public class PostController {
 		return new ResponseEntity<List<postVO>>(Postservice.tagList(vo), HttpStatus.OK);
 	}
 	
+	
+	// 메인화면 페이징
 	@RequestMapping(value = "PagingList", method = RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<postVO>> getPagingList(int pageNum, int amount) throws Exception{
@@ -107,5 +113,18 @@ public class PostController {
 		
 		
 		return new ResponseEntity<List<postVO>>(Postservice.postPaging(pageNum, amount), HttpStatus.OK);
+	}
+	
+	// 테그 별 페이징
+	@RequestMapping(value = "/{tagname}/{page}", method = RequestMethod.GET)
+	public ResponseEntity<postPageVO> tagPaginglist(@PathVariable("tagname") String tagname, @PathVariable("page") int page) throws Exception{
+	
+		logger.info("tagPaginglist...... " );
+		
+		Criteria cri = new Criteria(page, 10);
+		logger.info("list bno, page : " + tagname +", " + page );
+		logger.info("list cri : " + cri );
+		logger.info("list listpage : " + Postservice.tagPaging(cri, tagname));
+		return new ResponseEntity<postPageVO>(Postservice.tagPaging(cri, tagname), HttpStatus.OK);
 	}
 }

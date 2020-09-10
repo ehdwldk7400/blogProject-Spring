@@ -12,5 +12,6 @@ public interface UserDAO {
 	
 	// ID Cheack
 	public int idchk(usersVO vo) throws Exception;
+	 
 	
 }

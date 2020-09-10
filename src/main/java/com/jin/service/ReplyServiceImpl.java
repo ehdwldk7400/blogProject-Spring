@@ -51,7 +51,10 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public ReplyPageVO listPage(int bno, Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return new ReplyPageVO(dao.list(bno), dao.replycnt(bno));
+		
+		System.out.println("SerivceImpl bno : "+ bno);
+		System.out.println("SerivceImpl cri : "+ cri);
+		return new ReplyPageVO(dao.listPage(bno, cri), dao.replycnt(bno));
 	}
 	
 

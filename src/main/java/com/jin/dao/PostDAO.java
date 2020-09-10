@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.jin.doamin.Criteria;
 import com.jin.doamin.postVO;
 
 public interface PostDAO {
@@ -29,8 +30,13 @@ public interface PostDAO {
 	// Tag 리스트
 	public List<postVO> tagList(postVO vo) throws Exception;
 	
-	// 게시물 페이징
+	// 메인페이지 게시물 페이징 (무슨 스크롤)
 	public List<postVO> postPaging(@Param("pageNum")int pageNum, @Param("amount")int amount) throws Exception;
-
+	
+	// 태그별 게시물 페이징 처리
+	public List<postVO> tagPaging(@Param("cri") Criteria cri, @Param("tagname") String tagname) throws Exception;
+	
+	// 태그별 게시물 카운트
+	public int getTotalTag(String tagname) throws Exception;
 
 }

@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -134,6 +135,16 @@ public class HomeController {
 		logger.info("idchk : " + vo);
 		
 		return new ResponseEntity<Integer>(service.idchk(vo), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="logout", method= RequestMethod.GET)
+	public String logout(HttpSession session, HttpServletResponse response) throws Exception{
+		
+		session.invalidate();
+		
+		logger.info("logout response", response);
+		
+		return "redirect:/";
 	}
 	
 }
