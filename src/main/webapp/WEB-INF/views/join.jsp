@@ -27,10 +27,10 @@
 							<article class="simgup-form">
 								<div class="input-group field-button">
 								  <input type="hidden" path="random" id="random" value="${random}" >
-								  <input type="hidden" path="random" name="userid"id="user-id" value="${userid.userid}" >
+								  <input type="hidden" path="random" name="userid"id="user-id" value="" >
 									<div class="input-field">
 										<div class="input-wrap">
-											<input type="text" id="userid" name="userid" placeholder="계정 (이메일)"
+											<input type="text" id="userid"  placeholder="계정 (이메일)"
 												maxlength="64">
 										</div>
 										<div class="btn-wrap">

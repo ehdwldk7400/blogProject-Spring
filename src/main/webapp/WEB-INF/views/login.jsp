@@ -17,7 +17,7 @@
                     <h1><a href="/blog">Sign In</a></h1>
                 </header>
                 <section class="login-wrap">
-                    <form action="/blog/login" method="POST" autocomplete="off">
+                    <form action="/blog/loginPost" method="POST" autocomplete="off">
                         <div class="input-email">
                             <input type="text" id="userid" name="userid" placeholder="이메일을 입력해주세요.">
                         </div>

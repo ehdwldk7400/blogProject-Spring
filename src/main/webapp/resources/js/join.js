@@ -154,8 +154,10 @@ $(document).ready(function () {
     			openModal();
     			$(".number").css("display", "");
     			$("#btn-primary").css("display", "none");
+    			$("#user-id").val(userid);
     			$("#userid").attr('disabled', 'disabled');
     			$(".btn-reset").css("display", "");
+    		
     		
     			
     		},
@@ -188,6 +190,7 @@ $(document).ready(function () {
     			$(".btn-reset").css("display", "none");
     			$("#id-icon").css("display", "");
     			$("#userpw").removeAttr('disabled', 'disabled');
+    			
 
     		},
     		error:function(data){

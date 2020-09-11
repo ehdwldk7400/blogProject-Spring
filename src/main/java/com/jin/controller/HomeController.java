@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,9 @@ public class HomeController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String postjoin(usersVO vo) throws Exception {
 		
+		String hashedPw = BCrypt.hashpw(vo.getUserpw(), BCrypt.gensalt());
+		vo.setUserpw(hashedPw);
+	
 		logger.info("PostJoin VO : " + vo);
 		service.createUser(vo);
 		return "redirect:/";
@@ -105,22 +109,21 @@ public class HomeController {
 	public void getlogin() {
 		logger.info("로그인 페이지 이동");
 	}
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String postlogin(usersVO vo, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	public void postlogin(usersVO vo, Model model) throws Exception {
 		
 		logger.info("PostLogin VO : " + vo);
-		usersVO result = service.login(vo);
-		logger.info("result 의 값 : " + result);
+	
+		usersVO userVO = service.login(vo);
+		logger.info("userVO 의 값 : " + userVO);
 		
-		HttpSession session = request.getSession();
-		if(result != null) {
-			session.setAttribute("login", result);
-			logger.info("세신 값 : " +session.getAttribute("login") );
-			return "redirect:/";
-		}else {
-			return "redirect:/login";
+		if(userVO == null || !BCrypt.checkpw(vo.getUserpw(), userVO.getUserpw())) {
+			return;
 		}
+//		
+		model.addAttribute("userVO", userVO);
 	}
+
 	@RequestMapping(value = "/tag", method = RequestMethod.POST)
 	public String posthome(tagVO vo) throws Exception {
 		logger.info("tagVO : " + vo);

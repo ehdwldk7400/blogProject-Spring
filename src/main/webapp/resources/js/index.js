@@ -54,13 +54,10 @@ $(document).ready(function () {
 				$("#loading").css("display", "block");
 				$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount, function(data){
 					
-					
-					console.log(data);
-					
+						
 					let str = "";
 					let date = new Date();
 					if(data[0] != null){
-						console.log("loading start");
 						$(data).each(function(){
 //					console.log(this.regdate);
 							date = getFormatDate(this.regdate);
@@ -112,7 +109,6 @@ $(document).ready(function () {
 function openModal(modalname) {
     document.get
 
-    console.log(modalname);
     $("#modal").fadeIn(300);
     $("." + modalname).fadeIn(300);
 }
@@ -140,8 +136,6 @@ function getTagList(tagname, tagPageNum){
 	$("#loading").css("display","block");
 	$.getJSON("/blog/post/"+encodeURIComponent(tagname)+"/"+tagPageNum, function(data){
 	
-		console.log(data);
-		console.log(data.list);
 		
 		let str = "";
 		$(".title-tag").html(tagname);
@@ -213,7 +207,7 @@ let AllList = function(){
 	
 	$("#loading").css("display","block");
 	$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount, function(data){
-		console.log(data);
+
 		
 		$(data).each(function(){
 //			console.log(this.regdate);

@@ -23,6 +23,26 @@
 	
 	<context:component-scan base-package="com.jin.controller" />
 	
+	<!-- 인터셉터 설정 -->
+	<beans:bean id="loginInterceptor" class="com.jin.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="authInterceptor" class="com.jin.interceptor.AuthInterceptor"></beans:bean>
+	
+	<!-- 로그인 세션 관리 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors> 
+	
+	<interceptors>
+		<interceptor>
+			<!-- 댓글 작성 전 로그인 확인 -->
+			<mapping path="/reply/ReplyCreate"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	
 	
 </beans:beans>

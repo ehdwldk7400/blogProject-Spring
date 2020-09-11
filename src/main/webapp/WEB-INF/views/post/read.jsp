@@ -54,7 +54,7 @@
                 <div class="reply-contents">
                <form action="/blog/reply/ReplyCreate" method="post">
                 	 <input type="hidden" id="bno" name="bno" value="${read.bno}">
-                   	 <input type="hidden" id="replyer" name="replyer" value="test">
+                   	 <input type="hidden" id="replyer" name="replyer" value="${login.username }">
                         <div class="content-text">
                             <textarea name="replytext" id="replycontent"class="replycontent" placeholder="댓글을 남겨주세요."></textarea>
                             <div class="submit-btn">
