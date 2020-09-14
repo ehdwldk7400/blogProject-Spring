@@ -191,3 +191,7 @@
     pointer-events: none;
     color: #bbb;
 }
+
+.replygroup{
+	margin-left: 65px;
+}

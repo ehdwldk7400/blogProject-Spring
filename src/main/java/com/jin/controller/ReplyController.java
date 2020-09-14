@@ -53,7 +53,7 @@ public class ReplyController {
 		logger.info("list bno, page : " + bno +", " + page );
 		Criteria cri = new Criteria(page, 10);
 		logger.info("list cri : " + cri );
-		logger.info("list listpage : " + Reservice.listPage(bno, cri) );
+		logger.info("list listpage : " +  Reservice.listPage(bno, cri));
 		
 		
 		return new ResponseEntity<ReplyPageVO>(Reservice.listPage(bno, cri), HttpStatus.OK);
@@ -76,10 +76,13 @@ public class ReplyController {
 		Reservice.rePlycreate(vo);
 		
 		mav.setViewName("redirect:/post/read?bno="+vo.getBno());
+		mav.addObject("reply", vo);
 		logger.info("ReplyCreate mav : " + mav);
 		
 		return mav;
 	}
+	
+	// ¥Ò±€ ªË¡¶
 	@RequestMapping(value="/{rno}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> delete(@PathVariable("rno") int rno) throws Exception {
 		ResponseEntity<String> result = null;
@@ -98,6 +101,8 @@ public class ReplyController {
 		
 		return result;
 	}
+	
+	// ¥Ò±€ ºˆ¡§
 	@RequestMapping(value="/{rno}", method=RequestMethod.PUT)
 	public ResponseEntity<String> replyupdate(@PathVariable("rno") int rno, @RequestBody ReplyVO vo) throws Exception{
 		
@@ -115,4 +120,25 @@ public class ReplyController {
 		}
 		return result;
 	}
+	
+	// ¥Î¥Ò±€ ¿€º∫
+	@RequestMapping(value="/{rnogroup}", method=RequestMethod.POST)
+	public ResponseEntity<String> PostrePlyGroupcreate(@PathVariable("rnogroup") int rnogroup, @RequestBody ReplyVO vo) throws Exception{
+		ResponseEntity<String> result = null;
+		
+		try {
+			vo.setRnogroup(rnogroup);
+			logger.info("rePlyGroupcreate VO : " + vo );
+			logger.info("rePlyGroupcreate renogroup : " + rnogroup );
+			
+			Reservice.rePlyGroupcreate(vo);
+			
+			result = new ResponseEntity<String>("success",HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			result = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return result;
+	}
+	
 }

@@ -17,7 +17,12 @@
 	</select>
 	
 	<insert id="rePlycreate">
-		insert into post_reply(bno, replytext, replyer, open) values(#{bno}, #{replytext}, #{replyer}, #{open})
+		<!-- 최초의 댓글 생성시 rno값이 null이면 0으로 초기화 -->
+		<selectKey keyProperty="rno" order="BEFORE" resultType="int">
+				select ifnull(max(rno), 0)+1 rno from post_reply
+		</selectKey>
+	
+		insert into post_reply(rno, bno, rnogroup, replytext, replyer, open) values(#{rno}, #{bno}, #{rno}, #{replytext}, #{replyer}, #{open})
 	</insert>
 	
 	<delete id="delete">
@@ -30,15 +35,24 @@
  	
  	<select id="listPage" resultType="com.jin.doamin.ReplyVO">
  		<![CDATA[
-	 		select * from (
+ 			select * from (
 					select @rownum:=@rownum+1 as rownum, b.* 
 					from (select @rownum:=0) as tmp, post_reply as b 
 					where bno = #{bno}
-			 		order by rno desc
+			 		order by rnogroup desc, bundel_order asc
 				) post_reply
 				where rownum > (#{cri.pageNum}-1)* #{cri.amount} 
-					and rownum <= #{cri.pageNum} * #{cri.amount}
+				and rownum <= #{cri.pageNum}* #{cri.amount}; 
 		]]>
  	</select>
+ 	
+ 	<insert id="rePlyGroupcreate">
+ 		<!-- 최초의 댓글 생성시 rno값이 null이면 0으로 초기화 -->
+		<selectKey keyProperty="bundel_order" order="BEFORE" resultType="int">
+				select max(bundel_order)+1 from post_reply where rnogroup = #{rnogroup}
+		</selectKey>
+ 	
+ 		insert into post_reply(bno, rnogroup, bundel_order, replytext, replyer, open) values(#{bno}, #{rnogroup}, #{bundel_order}, #{replytext}, #{replyer}, #{open})
+ 	</insert>
 
 </mapper>

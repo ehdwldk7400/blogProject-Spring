@@ -5,6 +5,9 @@ import java.sql.Date;
 public class ReplyVO {
 	private int rno;
 	private int bno;
+	private int rnogroup;
+	private int bundel_order;
+
 	private String replytext;
 	private String replyer;
 	private String open;
@@ -21,6 +24,19 @@ public class ReplyVO {
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
+	}
+	public int getRnogroup() {
+		return rnogroup;
+	}
+	public void setRnogroup(int rnogroup) {
+		this.rnogroup = rnogroup;
+	}
+	
+	public int getBundel_order() {
+		return bundel_order;
+	}
+	public void setBundel_order(int bundel_order) {
+		this.bundel_order = bundel_order;
 	}
 	public String getReplytext() {
 		return replytext;
@@ -54,8 +70,9 @@ public class ReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", replyer=" + replyer + ", open="
-				+ open + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+		return "ReplyVO [rno=" + rno + ", bno=" + bno + ", rnogroup=" + rnogroup + ", bundel_order=" + bundel_order
+				+ ", replytext=" + replytext + ", replyer=" + replyer + ", open=" + open + ", regdate=" + regdate
+				+ ", updatedate=" + updatedate + "]";
 	}
 	
 	

@@ -45,6 +45,7 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void update(ReplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("SerivceImpl Update vo : "+ vo);
 		dao.update(vo);
 	}
 
@@ -55,6 +56,14 @@ public class ReplyServiceImpl implements ReplyService {
 		System.out.println("SerivceImpl bno : "+ bno);
 		System.out.println("SerivceImpl cri : "+ cri);
 		return new ReplyPageVO(dao.listPage(bno, cri), dao.replycnt(bno));
+	}
+
+	@Override
+	public void rePlyGroupcreate(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+		dao.rePlyGroupcreate(vo);
+		
 	}
 	
 

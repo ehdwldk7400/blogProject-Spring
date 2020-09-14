@@ -19,6 +19,9 @@ public interface ReplyDAO {
 	// ¥Ò±€ æ≤±‚
 	public void rePlycreate(ReplyVO vo) throws Exception;
 	
+	// ¥Î¥Ò±€ æ≤±‚
+	public void rePlyGroupcreate(ReplyVO vo) throws Exception;
+	
 	//¥Ò±€ ªË¡¶
 	public void delete(int rno) throws Exception;
 	
