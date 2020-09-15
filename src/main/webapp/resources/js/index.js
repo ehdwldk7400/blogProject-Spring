@@ -213,13 +213,14 @@ let AllList = function(){
 //			console.log(this.regdate);
 			date = getFormatDate(this.regdate);
 //			console.log(date);
-			
+			let test = this.content.substring(0, 3);
+			console.log(test)
 		    str += "<div class='cont-in-list'> <div class='cont-itme'> <time class='cont-time' datatime='"+ date +"'>"+ date +"</time>"
 		    + "<span class='item-span-point'></span>" + "<span class='item-sapn'><a>"+ this.tagname +"</a></span>"
 		    + "<span class='item-span-point'></span>" + "<span class='item-span-point'><img src='resources/img/user.png'></span>"
 		    + "<span class='viewcont'>"+ this.viewcnt +"</span> </div>"
 		    + "<h2 class='title-h2'><a href='/blog/post/read?bno="+ this.bno +"'>"+ this.title +"</a></h2>"
-		    + "<p class='title-p'>"+ this.content +"</p>"
+		    + "<p class='title-p'>"+ this.content.substring(0, 178) +"</p>"
 		    + "<a href='/blog/read?bno="+ this.bno +"' class='item-readmove'>Read</a>"
 		    +"</div>";
 			

@@ -65,6 +65,13 @@ public class ReplyServiceImpl implements ReplyService {
 		dao.rePlyGroupcreate(vo);
 		
 	}
+
+	@Override
+	public void CommentDelete(int rno) throws Exception {
+		// TODO Auto-generated method stub
+		
+		dao.CommentDelete(rno);
+	}
 	
 
 }

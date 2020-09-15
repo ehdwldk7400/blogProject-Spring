@@ -2,8 +2,8 @@ $(document).ready(function(){
 	
 	let bno = $("#bno").val();
 	let page = 1;
+	let username = $("#username").val();
 //	console.log(bno);
-//	console.log();
 	
 	getAllList(bno, page);
 	getRepltCnt(bno);
@@ -23,23 +23,32 @@ $(document).ready(function(){
 
 	// 댓글 삭제
 	$(document).on("click", ".reply-delete", function(){
-		let rno = $("#rno").val();
+		let bno = $("#bno").val();
+		let div = $(this).parent();	
+		let rno = div.attr("data-rno");
+		 let replyname = $("span[data-name="+rno+"]").html();
+		 if(username.indexOf(replyname) != 0 && username.indexOf("관리자") != 0){
+		    	alert("삭제 권한이 없습니다.");
+		 }else{
+			let rno = $("#rno").val();
+			 $.ajax({
+				 type : 'delete',
+				 url : '/blog/reply/'+rno,
+				 headers : {"Content-Type":"application/json","X-HTTP-Method-Overried":"DELETE"},
+				 dateType : 'text',
+				 data : JSON.stringify({ rno: rno}),
+				 
+				 success: function(data){
+					 getAllList(bno, page);
+				 },
+				 error: function(data){
+					 alert("댓글 삭제에 실패했습니다."+ data);
+				 }
+				 
+			 });
+		 }
+
 //		console.log(rno);	
-		$.ajax({
-			type : 'delete',
-			url : '/blog/reply/'+rno,
-			headers : {"Content-Type":"application/json","X-HTTP-Method-Overried":"DELETE"},
-			dateType : 'text',
-			data : JSON.stringify({ rno: rno}),
-			
-			success: function(data){
-				getAllList(bno, page);
-			},
-			error: function(data){
-				alert("댓글 삭제에 실패했습니다."+ data);
-			}
-			
-		});
 		
 	});
 	
@@ -49,35 +58,41 @@ $(document).ready(function(){
 			let div = $(this).parent();	
 			let rno = div.attr("data-rno");
 		    let replytext = $("span[data-rno="+rno+"]").html();
+		    let replyname = $("span[data-name="+rno+"]").html();
 			
-		    let str = "";
-			
-			str += "	 <div class='reply-contents'>"
-				+"      	 <input type='hidden' id='bno' name='bno' value='"+ bno+"'>"
-				+"         	 <input type='hidden' id='replyer' name='replyer' value='${login.username }'>"
-				+"   		 <input type='hidden' id='rno' value='"+rno+"'> "
-				+"              <div class='content-text'>"
-				+"                  <input tpye='text' name='replytext'id='replytext' class='replycontent' value='"+replytext+"'>"
-				+"                  <div class='submit-btn' data-rno="+rno+">"
-				+"                      <button type='button'id='update-btn' class='reply-btn'>수정</button>"
-				+"                 </div>"
-				+"              </div>"
-				+"              <div class='checkbox'>"
-				+"                  <label for='reY' class='ck-radio'>"
-				+"                      <input type='radio' id='reY' name='open' value='Y' data-gender="+rno+" checked>"
-				+"                      <span>공개</span>"
-				+"                  </label>"
-				+"                  <label for='reN' class='ck-radio'>"
-				+"                      <input type='radio' id='reN' name='open' value='N'data-gender="+rno+">"
-				+"                      <span>비공개</span>"
-				+"                  </label>"
-				+"              </div>"
-				+"     </div>";
-			
-			
-			
-			
-			$("li[data-rno="+rno+"]").html(str);
+		    if(username.indexOf(replyname) != 0 && username.indexOf("관리자") != 0){
+		    	alert("수정 권한이 없습니다.");
+		    }else{
+		    	let str = "";
+		    	
+		    	str += "	 <div class='reply-contents'>"
+		    		+"      	 <input type='hidden' id='bno' name='bno' value='"+ bno+"'>"
+		    		+"         	 <input type='hidden' id='replyer' name='replyer' value='${login.username }'>"
+		    		+"   		 <input type='hidden' id='rno' value='"+rno+"'> "
+		    		+"              <div class='content-text'>"
+		    		+"                  <input tpye='text' name='replytext'id='replytext' class='replycontent' value='"+replytext+"'>"
+		    		+"                  <div class='submit-btn' data-rno="+rno+">"
+		    		+"                      <button type='button'id='update-btn' class='reply-btn'>수정</button>"
+		    		+"                 </div>"
+		    		+"              </div>"
+		    		+"              <div class='checkbox'>"
+		    		+"                  <label for='reY' class='ck-radio'>"
+		    		+"                      <input type='radio' id='reY' name='open' value='Y' data-gender="+rno+" checked>"
+		    		+"                      <span>공개</span>"
+		    		+"                  </label>"
+		    		+"                  <label for='reN' class='ck-radio'>"
+		    		+"                      <input type='radio' id='reN' name='open' value='N'data-gender="+rno+">"
+		    		+"                      <span>비공개</span>"
+		    		+"                  </label>"
+		    		+"              </div>"
+		    		+"     </div>";
+		    	
+		    	
+		    	
+		    	
+		    	$("li[data-rno="+rno+"]").html(str);
+		    	
+		    }		    
 			
 	});
 	
@@ -89,15 +104,7 @@ $(document).ready(function(){
 		let rno = div.attr("data-rno");
 		let replytext =  $("#replytext").val();
 		let open = $('input[data-gender="'+ rno +'"]:checked').val();
-		
-
-		console.log(bno);
-		console.log(div);
-		console.log(rno);
-
-		console.log(replytext);
-		console.log(open);
-		
+			
 		$.ajax({
 			type : "PUT",
 			url : '/blog/reply/'+rno,
@@ -158,17 +165,17 @@ $(document).ready(function(){
 			+"   		 <input type='hidden' id='rnogroup' value='"+rnogroup+"'> "
 			+"              <div class='content-text'>"
 			+"                  <textarea name='replytext'id='replytext' class='replycontent' placeholder='답글을 남겨주세요.'> </textarea>"
-			+"                  <div class='submit-btn' data-rno="+rno+">"
+			+"                  <div class='submit-btn' data-rno="+rnogroup+">"
 			+"                      <button type='button'id='replygroup-btn' class='reply-btn'>답글쓰기</button>"
 			+"                 </div>"
 			+"              </div>"
 			+"              <div class='checkbox'>"
 			+"                  <label for='regY' class='ck-radio'>"
-			+"                      <input type='radio' id='regY' name='regopen' value='Y' checked>"
+			+"                      <input type='radio' id='regY' name='regopen' value='Y' data-gender="+rnogroup+" checked>"
 			+"                      <span>공개</span>"
 			+"                  </label>"
 			+"                  <label for='regN' class='ck-radio'>"
-			+"                      <input type='radio' id='regN' name='regopen' value='N'>"
+			+"                      <input type='radio' id='regN' name='regopen' value='N' data-gender="+rnogroup+">"
 			+"                      <span>비공개</span>"
 			+"                  </label>"
 			+"              </div>"
@@ -184,7 +191,7 @@ $(document).ready(function(){
 		var rnogroup = $("#rnogroup").val();
 		var replyer = $("#replyer").val();
 		var replytext = $("#replytext").val();
-		let open = $('input[name="regopen"]:checked').val();
+		let open = $('input[data-gender="'+ rnogroup +'"]:checked').val();
 		
 		
 		console.log(rnogroup);
@@ -215,16 +222,141 @@ $(document).ready(function(){
 		});
 	});
 	
+	
+	
+	// 대댓글 수정 링크 클릭 시 이벤트
+	$(document).on("click", ".Comment-update", function(){
+		let bno = $("#bno").val();
+		let div = $(this).parent();	
+		let rno = div.attr("data-rno");
+	    let replytext = $("span[data-rno="+rno+"]").html();
+	    let replyname = $("span[data-name="+rno+"]").html();
+	    
+	    console.log(rno);
+	    console.log(replytext);
+		
+	    if(username.indexOf(replyname) != 0 && username.indexOf("관리자") != 0){
+	    	alert("수정 권한이 없습니다.");
+	    }else{
+	    	let str = "";
+	    	
+	    	str += "	 <div class='reply-contents' data-list="+rno+">"
+	    		+"      	 <input type='hidden' id='bno' name='bno' value='"+ bno+"'>"
+	    		+"         	 <input type='hidden' id='replyer' name='replyer' value='${login.username }'>"
+	    		+"   		 <input type='hidden' id='rno' value='"+rno+"'> "
+	    		+"              <div class='content-text'>"
+	    		+"                  <input tpye='text' name='replytext'id='replytext' class='replycontent' value='"+replytext+"'>"
+	    		+"                  <div class='submit-btn' data-rno="+rno+">"
+	    		+"                      <button type='button'id='Comment-btn' class='reply-btn'>수정</button>"
+	    		+"                 </div>"
+	    		+"              </div>"
+	    		+"              <div class='checkbox'>"
+	    		+"                  <label for='reY' class='ck-radio'>"
+	    		+"                      <input type='radio' id='reY' name='open' value='Y' data-gender="+rno+" checked>"
+	    		+"                      <span>공개</span>"
+	    		+"                  </label>"
+	    		+"                  <label for='reN' class='ck-radio'>"
+	    		+"                      <input type='radio' id='reN' name='open' value='N'data-gender="+rno+">"
+	    		+"                      <span>비공개</span>"
+	    		+"                  </label>"
+	    		+"              </div>"
+	    		+"     </div>";
+	    	
+	    	$("div[data-list="+rno+"]").html(str);
+	    	
+	    }		    
+		
+	});
+	
+	// 대댓글 수정 하는 쿼리
+	$(document).on("click", "#Comment-btn", function(){
+		
+		let bno = $("#bno").val();
+		let div = $(this).parent();	
+		let rno = div.attr("data-rno");
+		let replytext =  $("#replytext").val();
+		let open = $('input[data-gender="'+ rno +'"]:checked').val();
+			
+		$.ajax({
+			type : "PUT",
+			url : '/blog/reply/'+rno,
+			headers : {"Content-Type":"application/json","X-HTTP-Method-Overried":"PUT"},
+			dateType : 'text',
+			data : JSON.stringify({ 
+				rno: rno,
+				replytext : replytext,
+				open : open
+			}),
+			
+			success: function(data){
+				getAllList(bno, page);
+			},
+			error: function(data){
+				alert("댓글 수정에 실패했습니다."+ data);
+			}
+			
+		});
+		
+	});
+	
+	// 대댓글 삭제
+	$(document).on("click", ".Comment-delete", function(){
+		let bno = $("#bno").val();
+		let div = $(this).parent();	
+		let rno = div.attr("data-rno");
+		 let replyname = $("span[data-name="+rno+"]").html();
+		 console.log(rno);
+		 
+		 if(username.indexOf(replyname) != 0 && username.indexOf("관리자") != 0){
+		    	alert("삭제 권한이 없습니다.");
+		 }else{
+		
+			 $.ajax({
+				 type : 'DELETE',
+				 url : '/blog/reply/comment/'+rno,
+				 headers : {"Content-Type":"application/json","X-HTTP-Method-Overried":"DELETE"},
+				 dateType : 'text',
+				 data : JSON.stringify({ rno: rno}),
+				 
+				 success: function(data){
+					 getAllList(bno, page);
+				 },
+				 error: function(data){
+					 alert("댓글 삭제에 실패했습니다."+ data);
+				 }
+				 
+			 });
+		 }
+
+//		console.log(rno);	
+		
+	});
+	
 });
 
 function getAllList(bno, page){
+	let username = $("#username").val();
 	
 	$.getJSON("/blog/reply/"+bno+"/"+page, function(data){
 //		console.log("reply.js");
 //		console.log("data ", data);
+		let lilist = "";
+		console.log("data ", data);
+		
+
+//		if(data.list[0].bundel_order != 0){
+//			
+//			lilist += "<li class='reply-content' data-rno="+ data.list[0].rnogroup +"></li>";
+//		
+//			$(".reply-list").html(lilist);
+//					  
+//		}
+
+		
 		
 		let str = "";
 		let bundel = "";
+
 		let date = new Date();
 		
 		console.log("getAllList data : ",data);
@@ -241,22 +373,25 @@ function getAllList(bno, page){
 						+"             <div class='reply'>"
 						+"					<div class='name-time'>"
 						+"                 		<span class='blog-icon'></span>"
-						+"                 		<span class='reply-name'>"+this.replyer+"</span>"
+						+"                 		<span class='reply-name' data-name="+ this.rno +">"+this.replyer+"</span>"
 						+"                 		<time class='reply-time' datatime='"+ date +"'>"+ date +"</time>"
 						+"					</div>"
 						+"					<div class='delete-update'data-rno="+ this.rno +">"
 						+"						<a href='#none' class='reply-update link'>수정 </a>"
 						+"						<a href='#none' class='reply-delete link'>삭제 </a>"
 						+"					</div>"
+									
 						+"             </div>"
 						+"             <div class='cng-content'>"
 						+"                 <p class='speech'>";
-//											console.log(this.open);
-											if(this.open == "Y"){
-						str +="                     <span class='text-reply' data-rno="+ this.rno +">"+ this.replytext
-						+"                     </span>";													
-											}else{
+			
+											if(this.open == "N" && (username.indexOf(this.replyer) != 0 && username.indexOf("관리자") != 0)){
 						str +="                     <span class='text-reply' data-rno="+ this.rno +"> 비밀글 입니다."
+						+"                     </span>";													
+									
+												
+											}else{
+						str +="                     <span class='text-reply' data-rno="+ this.rno +">"+ this.replytext
 						+"                     </span>"	;						
 											}
 						str +="                         <span data-rno="+this.rnogroup+">"
@@ -268,39 +403,45 @@ function getAllList(bno, page){
 						+"    </li>";	
 //						console.log(str);
 				}
-				console.log(data.list[0].bundel_orde);
-				if(data.list[0].bundel_orde != 0){
-					let li ="" ;
+			
 					
-						li += "<li class='reply-content' data-rno="+ this.rnogroup +">"
-							+="</li>";
-					$(".reply-list").html(li);
-				}
-				$(".reply-list").html(str);
+					$(".reply-list").html(str);
 		});
 		$(data.list).each(function(){
 			date = getFormatDate(this.regdate);
+			let replyname = $("span[data-name="+this.rnogroup+"]").html();
+//			console.log(replyname);
 			if(this.bundel_order != 0){
-				bundel = "<div class='cng-container replygroup'>"
+				bundel = "<div class='cng-container replygroup' data-list="+ this.rno+">"
 				+"             <div class='reply'>"
 				+"					<div class='name-time'>"
 				+"                 		<span class='blog-icon'></span>"
-				+"                 		<span class='reply-name'>"+this.replyer+"</span>"
+				+"                 		<span class='reply-name' data-name="+ this.rno +">"+this.replyer+"</span>"
 				+"                 		<time class='reply-time' datatime='"+ date +"'>"+ date +"</time>"
 				+"					</div>"
 				+"					<div class='delete-update'data-rno="+ this.rno +">"
-				+"						<a href='#none' class='reply-update link'>수정 </a>"
-				+"						<a href='#none' class='reply-delete link'>삭제 </a>"
+				+"						<a href='#none' class='Comment-update link'>수정 </a>"
+				+"						<a href='#none' class='Comment-delete link'>삭제 </a>"
 				+"					</div>"
 				+"             </div>"
 				+"             <div class='cng-content'>"
-				+"                 <p class='speech'>"
-				+"                     <span class='text-reply' data-rno="+ this.rno +">"+ this.replytext
-				+"                     </span>"
-				+"                </p>"
+				+"                 <p class='speech'>";
+			
+								if(this.open == "N" && (username.indexOf(this.replyer) != 0 && username.indexOf("관리자") != 0 && username.indexOf(replyname) != 0)){
+		 bundel +="                     <span class='text-reply' data-rno="+ this.rno +"> 비밀글 입니다."
+				+"                     </span>";													
+								
+											
+										}else{
+		bundel +="                     <span class='text-reply' data-rno="+ this.rno +">"+ this.replytext
+				+"                     </span>"	;						
+										}               
+		bundel	+"                </p>"
 				+"            </div>"
-				+"        	</div>"
+				+"        	</div>";
 //				console.log("rno : ", this.rno);
+				
+			
 				$("li[data-rno="+this.rnogroup+"]").append(bundel);
 			}
 		});
@@ -368,6 +509,4 @@ function getFormatDate(req){
 }
 
 
-function replyUpdate(bno, replytext){
-	
-}
+

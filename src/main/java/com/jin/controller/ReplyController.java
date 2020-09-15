@@ -2,6 +2,8 @@ package com.jin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -121,6 +124,26 @@ public class ReplyController {
 		return result;
 	}
 	
+	// ¥Î¥Ò±€ ªË¡¶
+	@RequestMapping(value="/comment/{rno}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> CommentDelete(@PathVariable("rno") int rno, @RequestBody ReplyVO vo) throws Exception{
+	ResponseEntity<String> result = null;
+		
+		logger.info("CommentDelete.....");
+		logger.info("ReplyDelete rno : " + rno);
+		
+		try {
+			Reservice.CommentDelete(rno);
+			result = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			result = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		
+		return result;
+	}
+	
 	// ¥Î¥Ò±€ ¿€º∫
 	@RequestMapping(value="/{rnogroup}", method=RequestMethod.POST)
 	public ResponseEntity<String> PostrePlyGroupcreate(@PathVariable("rnogroup") int rnogroup, @RequestBody ReplyVO vo) throws Exception{
@@ -140,5 +163,6 @@ public class ReplyController {
 		}
 		return result;
 	}
+
 	
 }

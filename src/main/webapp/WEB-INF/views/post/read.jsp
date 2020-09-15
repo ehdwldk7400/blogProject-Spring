@@ -24,6 +24,7 @@
     <section class="contents">
    <form action="" role="form" id="fr">
 	<input type="hidden" id="bno" name="bno" value="${read.bno }">
+	<input type="hidden" id="username"  value="${login.username}">
         <div class="view-header">
             <h2 class="view-title">${read.title}</h2>
             <div class="header-group">

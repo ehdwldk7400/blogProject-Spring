@@ -26,6 +26,10 @@
 	</insert>
 	
 	<delete id="delete">
+ 		delete from post_reply where rnogroup = #{rno};
+ 	</delete>
+
+	<delete id="CommentDelete">
  		delete from post_reply where rno = #{rno};
  	</delete>
  	

@@ -21,6 +21,9 @@ public interface ReplyService {
 	
 	// ¥Î¥Ò±€ æ≤±‚
 	public void rePlyGroupcreate(ReplyVO vo) throws Exception;
+	
+	// ¥Î¥Ò±€ ªË¡¶
+	public void CommentDelete(int rno) throws Exception;
 		
 	// ¥Ò±€ ªË¡¶
 	public void delete(int rno) throws Exception;

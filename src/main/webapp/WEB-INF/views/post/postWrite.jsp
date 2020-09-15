@@ -23,11 +23,14 @@
 $(document).ready(function() {
 	  $('#summernote').summernote({
 			placeholder: 'content',
-	        minHeight: 370,
+	        minHeight: 800,
 	        maxHeight: null,
 	        focus: true, 
 	        lang : 'ko-KR'
 	  });
+	  $('.note-editable').css('font-size','14px');
+	  
+	
 	});
 </script>
 </head>
