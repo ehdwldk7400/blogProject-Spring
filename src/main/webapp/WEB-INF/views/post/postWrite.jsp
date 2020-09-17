@@ -16,23 +16,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="../resources/js/summernote-ko-KR.js"></script>
+<!-- <script src="../resources/js/summernote-bs4"></script> -->
+<script src="../resources/js/post.js"></script>
 <link rel="stylesheet" href="../resources/css/Default.css">
 <link rel="stylesheet" href="../resources/css/PostWrite.css">
 <title>글 작성</title>
-<script>
-$(document).ready(function() {
-	  $('#summernote').summernote({
-			placeholder: 'content',
-	        minHeight: 800,
-	        maxHeight: null,
-	        focus: true, 
-	        lang : 'ko-KR'
-	  });
-	  $('.note-editable').css('font-size','14px');
-	  
-	
-	});
-</script>
 </head>
 <body>
    <div class="main-group">

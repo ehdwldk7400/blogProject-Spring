@@ -1,169 +1,73 @@
-body{
-    color: #9398aa;
-    font-size: 15px;
-}
+body{ color: #9398aa; font-size: 15px; }
 
-.contents{
-    padding-top: 50px;
-}
-.wrap-contents{
-    min-height: calc(100% - 40px);
-    margin-bottom: -240px;
-    background-color: inherit;
-    padding: 0 20px;
+.contents{ padding-top: 50px; }
+.wrap-contents{ 
+	min-height: calc(100% - 40px); margin-bottom: -240px;
+    background-color: inherit; padding: 0 20px;
 }
 .contents{
-    position: relative;
-    min-height: 300px;
-    padding-top: 60px;
-    margin: 0 auto;
-    max-width: 440px;
+    position: relative; min-height: 300px;
+    padding-top: 60px; margin: 0 auto; max-width: 440px;
 }
-.content-header{
-    margin-bottom: 40px;
-    text-align: center;
-}
-.title{
-    font-size: 28px;
-    color: #535768;
-}
-.desc{
-    margin-top: 15px;
-    font-size: 15px;
-    color: #9398aa;
-}
+.content-header{ margin-bottom: 40px; text-align: center; }
+.title{ font-size: 28px; color: #535768;}
+.desc{ margin-top: 15px; font-size: 15px; color: #9398aa; }
 
-.contents .input-group{
-    position: relative;
-    text-align: left;
-    padding-bottom: 8px;
-}
-.input-field{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
-.input-wrap{
-    -webkit-box-flex: 1;
-    flex: 1;
-    position: relative;
-}
+.contents .input-group{ position: relative; text-align: left; padding-bottom: 8px; }
+.input-field{ position: relative; display: flex; flex-wrap: wrap; }
+.input-wrap{ -webkit-box-flex: 1; flex: 1; position: relative; }
 .contents .input-group input{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    font-size: .952rem;
-    font-weight: 500;
-    color: #334571;
-    padding: 15px;
-    border: 1px solid #d5d9e2;
-    -webkit-appearance: none;
-    outline: none;
-    vertical-align: middle;
+    display: flex; justify-content: center;
+    width: 100%; height: 50px;
+    font-size: .952rem; font-weight: 500;
+    color: #334571; padding: 15px;
+    border: 1px solid #d5d9e2; -webkit-appearance: none;
+    outline: none; vertical-align: middle;
 }
 /* 인증 메일 버튼부분 */
-.btn-wrap{
-    margin: 0 0 0 8px;
-    width: auto;
-}
-.btn-warp{
-	
-    margin-top: 30px;
-    width: auto;
-}
+.btn-wrap{ margin: 0 0 0 8px; width: auto; }
+.btn-warp{ margin-top: 30px; width: auto; }
 .btn-primary{
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 50px;
-    margin: 0 auto;
-    font-size: 16px;
-    color: #fff;
-    font-weight: 900;
-    text-decoration: none;
-    white-space: nowrap;
+    position: relative; display: block;
+    width: 100%; height: 50px;
+    margin: 0 auto; font-size: 16px;
+    color: #fff; font-weight: 900;
+    text-decoration: none; white-space: nowrap;
     transition: background-color .3s ease,border .3s ease;
-    box-sizing: border-box;
-    background-color: #378ff1;
+    box-sizing: border-box; background-color: #378ff1;
     border: 2px solid #378ff1;
 }
-.btn-primary:disabled{
-    border: 2px solid #d1d1de;
-    background-color: #d1d1de;
-    cursor: default;
-}
-.content-info{
-    color: #9398aa;
-    font-size: 15px;
-    margin-bottom: 30px;
-}
-a.btn-link{
-    display: inline-block;
-    font-size: 15px;
-    color: #378ff1;
-    line-height: 21px;
-}
-#userpw{
-    padding: 0 60px 0 16px;
-}
+.btn-primary:disabled{ border: 2px solid #d1d1de; background-color: #d1d1de; cursor: default; }
+.content-info{ color: #9398aa; font-size: 15px; margin-bottom: 30px; }
+a.btn-link{ display: inline-block; font-size: 15px; color: #378ff1; line-height: 21px; }
+#userpw{ padding: 0 60px 0 16px; }
 .pwd-strength-meter{
-    position: absolute;
-    top: 0;
-    right: 15px;
-    line-height: 50px;
+    position: absolute; top: 0;
+    right: 15px;line-height: 50px;
     user-select: none;
 }
-.grade{
-    font-size: 15px;
-    font-weight: 700;
-}
-.pwd-strength-meter[data-meter="0"] .grade{
-    color: #da3f34;
-}
-.pwd-strength-meter[data-meter="1"] .grade{
-    color: #ff914d;
-}
-.pwd-strength-meter[data-meter="2"] .grade{
-    color: #0eb9b3;
-}
-.pwd-strength-meter[data-meter="3"] .grade{
-    color: #2e79ea;
-}
-.contents .input-group input:disabled {
-    background-color: #efeff4;
-    border: 1px solid #d5d9e2;
-}
-.input-group input.invalid{
-    border: 1px solid #da3c31;
-}
-.input-group .msg.invalid {
-    color: #da3c31;
-}
+.grade{ font-size: 15px; font-weight: 700; }
+.pwd-strength-meter[data-meter="0"] .grade{ color: #da3f34; }
+.pwd-strength-meter[data-meter="1"] .grade{ color: #ff914d; }
+.pwd-strength-meter[data-meter="2"] .grade{ color: #0eb9b3; }
+.pwd-strength-meter[data-meter="3"] .grade{ color: #2e79ea; }
+.contents .input-group input:disabled { background-color: #efeff4; border: 1px solid #d5d9e2; }
+.input-group input.invalid{ border: 1px solid #da3c31; }
+.input-group .msg.invalid { color: #da3c31; }
 .icon-confirm{ 
     display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
+    -webkit-box-pack: center; justify-content: center;
+    -webkit-box-align: center; align-items: center;
     position: absolute;
-    right: 15px;
-    width: 15px;
-    height: 50px;
-    z-index: 999;
+    right: 15px; width: 15px; height: 50px; z-index: 999;
 }
 .icon-confirm span {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
+    font: 0/0 a; color: transparent;
+    text-shadow: none; background-color: transparent; border: 0;
 }
 .icon-confirm:after {
-    content: "";
-    display: block;
-    width: 7px;
-    height: 13px;
+    content: ""; display: block;
+    width: 7px; height: 13px;
     border: 3px solid #378ff1;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
@@ -171,29 +75,16 @@ a.btn-link{
 }
 
 .btn-reset{
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    position: absolute;
-    top: 0; right: 10px;
-    z-index: 999;
-    width: 30px;
-    height: 50px;
-    cursor: pointer;
+    display: flex; -webkit-box-pack: center; justify-content: center;
+    -webkit-box-align: center; align-items: center; position: absolute;
+    top: 0; right: 10px; z-index: 999;
+    width: 30px; height: 50px; cursor: pointer;
 }
 .btn-reset button{
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
-    position: relative;
-    display: block;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+    font: 0/0 a; color: transparent;
+    text-shadow: none; background-color: transparent;
+    border: 0; position: relative; display: block;
+    width: 30px; height: 30px; cursor: pointer;
 }
 .btn-reset button::before{
     content: "";
