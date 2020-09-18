@@ -10,6 +10,7 @@
 <title>Yang Dongjin Post</title>
 <link rel="stylesheet" href="resources/css/Default.css">
 <link rel="stylesheet" href="resources/css/index.css">
+<link rel="stylesheet" href="resources/css/search.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="resources/js/index.js"></script>
@@ -34,6 +35,9 @@
 				<li><a href="/blog/logout" class="logout">logout</a></li>
 			</c:if>
 			</ul>
+			<div id="Search-container">
+				<input type="search" placeholder="Search" id="search" autocomplete="off" name="keyword">
+			</div>
 		</header>
 		<main>
 		<div class="pro-tag">

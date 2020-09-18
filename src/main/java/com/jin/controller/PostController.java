@@ -2,6 +2,7 @@ package com.jin.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jin.doamin.Criteria;
 import com.jin.doamin.ReplyPageVO;
@@ -105,14 +107,15 @@ public class PostController {
 	// 메인화면 페이징
 	@RequestMapping(value = "PagingList", method = RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<postVO>> getPagingList(int pageNum, int amount) throws Exception{
+	public ResponseEntity<List<postVO>> getPagingList(Criteria cri) throws Exception{
 		
 		logger.info("getPaging......");
-		logger.info("getPaging pageNum : " + pageNum);
-		logger.info("getPaging amount : " + amount);
+		logger.info("getPaging pageNum : " + cri.getPageNum());
+		logger.info("getPaging amount : " + cri.getAmount());
+		logger.info("getPaging keyword : " + cri.getKeyword());
 		
 		
-		return new ResponseEntity<List<postVO>>(Postservice.postPaging(pageNum, amount), HttpStatus.OK);
+		return new ResponseEntity<List<postVO>>(Postservice.postPaging(cri), HttpStatus.OK);
 	}
 	
 	// 테그 별 페이징
@@ -121,7 +124,7 @@ public class PostController {
 	
 		logger.info("tagPaginglist...... " );
 		
-		Criteria cri = new Criteria(page, 10);
+		Criteria cri = new Criteria(page, 10, null);
 		logger.info("list bno, page : " + tagname +", " + page );
 		logger.info("list cri : " + cri );
 		logger.info("list listpage : " + Postservice.tagPaging(cri, tagname));

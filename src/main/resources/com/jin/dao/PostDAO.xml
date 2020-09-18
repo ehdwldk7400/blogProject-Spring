@@ -6,6 +6,14 @@
 
 <mapper namespace="com.jin.dao.PostDAO">
 
+	 <sql id="search">
+	
+		<if test="keyword != ''">
+			where title like CONCAT('%',#{keyword},'%')
+			or content like CONCAT('%',#{keyword},'%')
+		</if>
+	</sql> 
+
 	<select id="postList" resultType="com.jin.doamin.postVO">
 		 	<![CDATA[
 		 		select * from post where bno > 0 order by bno desc
@@ -45,7 +53,9 @@
 	<select id="postPaging" resultType="com.jin.doamin.postVO">
 		select * from (
 			select @rownum:= @rownum +1 as rownum, b.* from (select @rownum:=0) as tmp, post as b
+			 <include refid="search"></include>
 			order by bno desc) as postlist 
+	
 			
 			<![CDATA[
 				where rownum > (1-1) * #{amount} and rownum <= #{pageNum} * #{amount}		
@@ -53,13 +63,13 @@
 	</select>
 	
 	<select id="tagPaging" resultType="com.jin.doamin.postVO">
-		 	<![CDATA[
 		 		select * from (
 				select @rownum:=@rownum+1 as rownum, b.* 
 				from (select @rownum:=0) as tmp, post as b 
 				where tagname = #{tagname}
 		 		order by bno desc
 			) post
+		 	<![CDATA[
 			where rownum > (#{cri.pageNum}-1)* #{cri.amount} 
 				and rownum <= #{cri.pageNum} * #{cri.amount}
         

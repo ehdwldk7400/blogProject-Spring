@@ -8,16 +8,21 @@ public class Criteria {
 	// 페이지 당 보여지는 게시물 의 수
 	private int amount;
 	
+	private String keyword;
 	
+	
+
+
 	public Criteria() {
-		this(1, 10);
+		this(1, 10, null);
 	}
 
 
-	public Criteria(int pageNum, int amount) {
+	public Criteria(int pageNum, int amount, String keywrod) {
 		// TODO Auto-generated constructor stub
 		this.pageNum = pageNum;
 		this.amount = amount;
+		this.keyword = keywrod;
  	}
 
 
@@ -40,10 +45,18 @@ public class Criteria {
 		}
 		this.amount = amount;
 	}
+	public String getKeyword() {
+		return keyword;
+	}
+
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	@Override
 	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + "]";
 	}
 	
 	

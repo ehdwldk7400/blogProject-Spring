@@ -10,10 +10,23 @@ public class postVO {
 	private String content;
 	private Date regdate;
 	private int viewcnt;
+	
+	
+	private Criteria cri;
+	
+	public Criteria getCri() {
+		return cri;
+	}
+	public void setCri(Criteria cri) {
+		this.cri = cri;
+	}
+	public void setViewcnt(int viewcnt) {
+		this.viewcnt = viewcnt;
+	}
 	@Override
 	public String toString() {
 		return "postVO [tagname=" + tagname + ", bno=" + bno + ", title=" + title + ", content=" + content
-				+ ", regdate=" + regdate + ", viewent=" + viewcnt + "]";
+				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", cri=" + cri + "]";
 	}
 	public String getTagname() {
 		return tagname;

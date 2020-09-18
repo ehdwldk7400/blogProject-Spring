@@ -2,6 +2,7 @@
 let pageNum = 1;	// 페이지 번호
 let amount = 10;	//게시물 표시 겟수
 let tagPageNum = 1;
+let keyword ="";
 
 $(document).ready(function () {
 	
@@ -52,7 +53,7 @@ $(document).ready(function () {
 				pageNum = pageNum + 1;
 				
 				$("#loading").css("display", "block");
-				$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount, function(data){
+				$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount+"&keyword="+keyword, function(data){
 					
 						
 					let str = "";
@@ -84,6 +85,17 @@ $(document).ready(function () {
 				});
 			}
 		});
+	
+	// 검색바에 입력시 이벤트
+	$(document).on("propertychange change keyup paste input", "#search", function(){
+		
+		keyword = $("#search").val();
+		console.log("keyword : ", keyword);
+		AllList();
+		
+	});
+	 
+
 		
 	$(document).on("click", ".next", function(e){
 		e.preventDefault();
@@ -204,9 +216,8 @@ let AllList = function(){
 	let str = "";
 	let date = new Date();
 	
-	
 	$("#loading").css("display","block");
-	$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount, function(data){
+	$.getJSON("/blog/post/PagingList?pageNum="+pageNum+"&amount="+amount+"&keyword="+keyword, function(data){
 
 		
 		$(data).each(function(){
@@ -214,7 +225,7 @@ let AllList = function(){
 			date = getFormatDate(this.regdate);
 //			console.log(date);
 			let test = this.content.substring(0, 3);
-			console.log(test)
+//			console.log(test)
 		    str += "<div class='cont-in-list'> <div class='cont-itme'> <time class='cont-time' datatime='"+ date +"'>"+ date +"</time>"
 		    + "<span class='item-span-point'></span>" + "<span class='item-sapn'><a>"+ this.tagname +"</a></span>"
 		    + "<span class='item-span-point'></span>" + "<span class='item-span-point'><img src='resources/img/user.png'></span>"

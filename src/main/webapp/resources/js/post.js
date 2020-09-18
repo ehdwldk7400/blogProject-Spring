@@ -1,25 +1,30 @@
 $(document).ready(function() {
 	  $('#summernote').summernote({
-			placeholder: 'content',
+			placeholder: '글작성해주세요 ㅎ',
 	        minHeight: 800,
 	        maxHeight: null,
 	        focus: true, 
 	        lang : 'ko-KR',
 	        callbacks:{
 	        	onImageUpload : function(files, editor, welEditable){
-	  
-	        		uploadImageFile(files[0], this);
+	        		console.log(files);
+	        		console.log(editor);
+	        		console.log(welEditable);
+//	        		uploadImageFile(files[0], this);
+	        		for(let i = 0; i <= files.length -1; i++ ){
+	        			uploadImageFile(files[i], this);
+	        		}
 	        	}
 	        }
 	  });
 	  
-	  $(document).on('drop','div.card-block',function(e){
-		  console.log(e);
-		  for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
-			  uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
-		  }
-		  e.preventDefault();
-	  });
+//	  $(document).on('drop','.note-editable',function(e){
+//		  console.log(e);
+//		  for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
+//			  uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);
+//		  }
+//		  e.preventDefault();
+//	  });
 	  $('.note-editable').css('font-size','14px');
 	  
 	  
@@ -31,7 +36,7 @@ $(document).ready(function() {
 		 
 		  console.log(data);
 		  $.ajax({
-			  type : "POST",
+			  type : "POST", 
 			  data : data,
 			  url : "/blog/upload",
 			  dataType : 'json',

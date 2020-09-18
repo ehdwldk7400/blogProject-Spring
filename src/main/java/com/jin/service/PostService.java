@@ -3,6 +3,7 @@ package com.jin.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jin.doamin.Criteria;
 import com.jin.doamin.postPageVO;
@@ -28,7 +29,7 @@ public interface PostService {
 	public List<postVO> tagList(postVO vo) throws Exception;
 	
 	// 게시물 페이징
-	public List<postVO> postPaging(int pageNum, int amount) throws Exception;
+	public List<postVO> postPaging(@RequestParam("cri")Criteria cri) throws Exception;
 	
 	// 태그별 게시물 페이징 처리
 	public postPageVO tagPaging(@Param("cri") Criteria cri, @Param("tagname") String tagname) throws Exception;

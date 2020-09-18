@@ -29,12 +29,12 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<multipart-config>
+	<!-- <multipart-config>
 		<location>E:\\upload</location>
 		<max-file-size>20971520</max-file-size>
 		<max-request-size>41943030</max-request-size>
 		<file-size-threshold>20971520</file-size-threshold>
-	</multipart-config>
+	</multipart-config> -->
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
@@ -63,12 +63,12 @@
 		<filter-name>MultipartFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<init-param>
+	<!-- <init-param>
 
 		<param-name>multipartResolverBeanName</param-name>
 
 		<param-value>multipartResolver</param-value>
 
-	</init-param>
+	</init-param> -->
 
 </web-app>

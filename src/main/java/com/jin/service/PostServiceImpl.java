@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jin.dao.PostDAO;
 import com.jin.doamin.Criteria;
@@ -64,9 +65,9 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<postVO> postPaging(int pageNum, int amount) throws Exception {
+	public List<postVO> postPaging(@RequestParam("cri")Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.postPaging(pageNum, amount);
+		return dao.postPaging(cri);
 	}
 
 	@Override
