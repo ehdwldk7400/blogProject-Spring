@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,8 @@
 <title>회원가입</title>
 <link rel="stylesheet" href="resources/css/Default.css">
 <link rel="stylesheet" href="resources/css/signup.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="resources/js/signup.js"></script>
 </head>
 <body>
  <div class="container">
@@ -17,7 +20,8 @@
                         <h1 class="title">회원가입</h1>
                         <p class="desc">회원가입 수단을 선택해 주세요.</p>
                     </div>
-                    <article calss="selet-method">
+                    <article class="selet-method">
+                    <form role="form">
                         <div class="btn-wrap">
                             <a href="/blog/join" class="join btn">
                                 <span>이메일로 회원가입</span>
@@ -26,6 +30,7 @@
                         </div>
                         <!-- google -->
                         <div class="btn-wrap">
+                        	<input type="hidden" value="${google}" id="googleurl">
                             <button id="glogin" class="google-login-btn btn">
                                 <span>
                                     Google로 회원가입
@@ -48,6 +53,7 @@
                                 </span>
                             </button>
                         </div>
+                        </form>
                     </article>
                 </div>
             </div>

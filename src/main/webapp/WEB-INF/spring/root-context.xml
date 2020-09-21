@@ -7,12 +7,14 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:social="http://www.springframework.org/schema/social"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/social http://www.springframework.org/schema/social/spring-social-1.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -56,7 +58,16 @@
 			</props>
 		</property>
 	</bean>
-
+	
+	<!-- Google Login -->
+	<bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="805857066373-ttd2dgg92kt3s0k3oucbqh720rhqp595.apps.googleusercontent.com"/>
+		<constructor-arg value="En118u4xoJ20sqMG17SkW8rB"/>
+	</bean>
+	<bean id="gooleOAuth2Parmeters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login"/>
+		<property name="redirectUri" value="http://localhost:8080/blog/social/googleSignInCallback"/>
+	</bean>
 
 
 

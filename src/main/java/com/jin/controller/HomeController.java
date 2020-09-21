@@ -1,5 +1,7 @@
 package com.jin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,7 +60,6 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		logger.info("Tag List : " + Tagservice.tagList() );
 		model.addAttribute("tag",Tagservice.tagList());
 		
@@ -75,10 +80,39 @@ public class HomeController {
 		return "index";
 	}
 	
+	@Autowired
+	private GoogleConnectionFactory googleConnectionFactory;
+	
+	@Autowired
+	private OAuth2Parameters googleOAuth;
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public void getsignup() {
-		logger.info("getsignup....");
+	public void getsignup(HttpSession session, Model model) {
+		logger.info("signup get....");
+		
+		// 구글 Code 발행
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth);	
+		logger.info("google url : " + url);
+//		
+//		
+		ModelAndView mv = new ModelAndView();
+//		
+//		mv.setViewName("/blog/signup");
+//		mv.addObject("google", url);
+//		PrintWriter out;
+//		try {
+//			out = response.getWriter();
+//			out.write(url);
+//			out.flush();
+//			out.close();
+//			logger.info("out : " + out);
+//		} catch (IOException e) {
+//			throw new RuntimeException(e.getMessage(), e);
+//		}
+		model.addAttribute("google", url);
+		
+//		return mv;
 	}
 	
 	
@@ -131,7 +165,7 @@ public class HomeController {
 		Tagservice.createTag(vo);
 		return "redirect:/";
 	}
-	
+	 
 	// 유저 아이디 체크
 	@RequestMapping(value = "/idchk", method = RequestMethod.POST)
 	public ResponseEntity<Integer> idchk(usersVO vo) throws Exception{

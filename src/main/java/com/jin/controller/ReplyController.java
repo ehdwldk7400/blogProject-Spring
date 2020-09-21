@@ -54,7 +54,7 @@ public class ReplyController {
 	public ResponseEntity<ReplyPageVO> list(@PathVariable("bno") int bno, @PathVariable("page") int page) throws Exception{
 		
 		logger.info("list bno, page : " + bno +", " + page );
-		Criteria cri = new Criteria(page, 10);
+		Criteria cri = new Criteria(page, 10, null);
 		logger.info("list cri : " + cri );
 		logger.info("list listpage : " +  Reservice.listPage(bno, cri));
 		
