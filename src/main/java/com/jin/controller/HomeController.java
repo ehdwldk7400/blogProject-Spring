@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jin.auth.SNSLogin;
+import com.jin.auth.SnsValue;
 import com.jin.doamin.tagVO;
 import com.jin.doamin.usersVO;
 import com.jin.service.PostService;
@@ -82,37 +84,35 @@ public class HomeController {
 	
 	@Autowired
 	private GoogleConnectionFactory googleConnectionFactory;
+//	
+	@Autowired
+	private OAuth2Parameters googleOAuth2Parameters;
 	
 	@Autowired
-	private OAuth2Parameters googleOAuth;
+	private SnsValue naverSns;
+	
+	@Autowired
+	private SnsValue googleSns;
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public void getsignup(HttpSession session, Model model) {
 		logger.info("signup get....");
 		
-		// 구글 Code 발행
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth);	
-		logger.info("google url : " + url);
-//		
-//		
-		ModelAndView mv = new ModelAndView();
-//		
-//		mv.setViewName("/blog/signup");
-//		mv.addObject("google", url);
-//		PrintWriter out;
-//		try {
-//			out = response.getWriter();
-//			out.write(url);
-//			out.flush();
-//			out.close();
-//			logger.info("out : " + out);
-//		} catch (IOException e) {
-//			throw new RuntimeException(e.getMessage(), e);
-//		}
-		model.addAttribute("google", url);
+//		// 구글 Code 발행
+//		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+//		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth);	
+//
+//		model.addAttribute("google", url);
 		
-//		return mv;
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
+		
+//		/* 구글code 발행을 위한 URL 생성 */
+//		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+//		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+//
+//		model.addAttribute("google_url", url);
+
 	}
 	
 	

@@ -58,17 +58,26 @@
 			</props>
 		</property>
 	</bean>
-	
-	<!-- Google Login -->
-	<bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
-		<constructor-arg value="805857066373-ttd2dgg92kt3s0k3oucbqh720rhqp595.apps.googleusercontent.com"/>
-		<constructor-arg value="En118u4xoJ20sqMG17SkW8rB"/>
-	</bean>
-	<bean id="gooleOAuth2Parmeters" class="org.springframework.social.oauth2.OAuth2Parameters">
-		<property name="scope" value="https://www.googleapis.com/auth/plus.login"/>
-		<property name="redirectUri" value="http://localhost:8080/blog/social/googleSignInCallback"/>
-	</bean>
 
+
+
+
+
+	<!-- Google Login -->
+<!-- 	<bean id="googleConnectionFactory"
+		class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg
+			value="805857066373-f84o8uen3tj342ehstnfvpvn8jbv6nfn.apps.googleusercontent.com" />
+		<constructor-arg value="XntTydc1zAB0Le_ISvm3j6s0" />
+	</bean>
+	<bean id="gooleOAuth2Parmeters"
+		class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope"
+			value="https://www.googleapis.com/auth/plus.login" />
+		<property name="redirectUri"
+			value="http://localhost:8080/blog/social/googleSignInCallback" />
+	</bean>
+ -->
 
 
 

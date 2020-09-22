@@ -1,32 +1,22 @@
 package com.jin.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.api.impl.GoogleTemplate;
-import org.springframework.social.google.api.plus.Person;
-import org.springframework.social.google.api.plus.PlusOperations;
-import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.oauth2.OAuth2Parameters;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jin.auth.SNSLogin;
+import com.jin.auth.SnsValue;
+import com.jin.dao.UserDAO;
 import com.jin.doamin.usersVO;
 
 
@@ -38,71 +28,44 @@ public class SocialController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
-	private GoogleConnectionFactory googleConnectionFactory;
+	private UserDAO dao;
 	
 	@Autowired
-	private OAuth2Parameters googleOAuth;
+	private SnsValue googleSns;
 	
-	@RequestMapping(value = "googleSignInCallback", method = { RequestMethod.GET, RequestMethod.POST})
-	public String doSessionAssignActionPage(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			Model model, @RequestParam String code, @RequestParam String scope){
-		System.out.println("googleSignInCallback get...........");
-//		String code = request.getParameter("code");
-
-		logger.info("googleSignInCallback request : " + request);
-		logger.info("googleSignInCallback response : " + response);
-		logger.info("googleSignInCallback code : " + code);
-		logger.info("googleSignInCallback scope : " + scope);
-		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-		AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth.getRedirectUri(),
-				null);
-		
-		logger.info("googleSignInCallback accessGrant : " + accessGrant);
-		logger.info("googleSignInCallback accessGrant.getRefreshToken() : " + accessGrant.getRefreshToken());
-		
-		String accessToken = accessGrant.getAccessToken();
-		Long expireTime = accessGrant.getExpireTime();
-		
-		logger.info("googleSignInCallback accessToken : " + accessToken);
-		logger.info("googleSignInCallback exprireTime : " + expireTime);
-		logger.info("googleSignInCallback System : " + System.currentTimeMillis());
-		
-		
-		if (expireTime != null && expireTime < System.currentTimeMillis()) {
-			accessToken = accessGrant.getRefreshToken();
-			logger.info("accessToken is expired. refresh token = {}", accessToken);
-		}
-		logger.info("googleSignInCallback accessToken : " + accessToken);
+	@Autowired
+	private SnsValue naverSns;
 	
-		Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
-		logger.info("googleSignInCallback connection : " + connection);
+	@RequestMapping(value = "googleCallback", method = { RequestMethod.GET, RequestMethod.POST})
+	public String snsLoginCallback(Model model, @RequestParam String code) throws Exception{
+		// 1. code를 이용 access_token 받기
+		// 2. access_token을 이용 사용자 profile 정보 가져오기
+		SNSLogin snsLogin = new SNSLogin(googleSns);
+		usersVO profile = snsLogin.getUserProfile(code);
 		
-		Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-		logger.info("googleSignInCallback google : " + google);
+		logger.info("profile : " + profile);
+		model.addAttribute("login", profile);
 		
-		PlusOperations plusOperations = google.plusOperations();
-		logger.info("googleSignInCallback plusOperations : " + plusOperations);
+		// 3. DB 해당 유저가 존재하는지 체크
+		// 4. 아이디가 존재 시 강제 로그인, 미존재 시 회원가입
 		
-		Person person = plusOperations.getGoogleProfile();
-		logger.info("person" + person);
-		
-		
-		usersVO member = new usersVO();
-		member.setUsername(person.getDisplayName());
-
-		session.setAttribute("login", member);
-		
-		System.out.println(person.getDisplayName());
-		
-		return "redirect:/";
-		/*System.out.println(person.getAccountEmail());
-		System.out.println(person.getAboutMe());
-		System.out.println(person.getDisplayName());
-		System.out.println(person.getEtag());
-		System.out.println(person.getFamilyName());
-		System.out.println(person.getGender());
-		*/
-		
+		return "/blog";
 	}
 	
+	@RequestMapping(value = "naverCallback", method = { RequestMethod.GET, RequestMethod.POST})
+	public String NaverLoginCallback(Model model, @RequestParam String code,HttpServletRequest request) throws Exception{
+		
+		logger.info("NaverLoginCallback get..........");
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		usersVO profile =snsLogin.getUserProfile(code);
+		logger.info("profile : " + profile);
+		if(dao.idchk(profile) == 0) {
+			dao.createUser(profile);			
+		}
+		// 세션 생성
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(30*60);
+		session.setAttribute("login", profile);
+		return "redirect:/";
+	}
 }

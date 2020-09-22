@@ -157,9 +157,6 @@ $(document).ready(function () {
     			$("#user-id").val(userid);
     			$("#userid").attr('disabled', 'disabled');
     			$(".btn-reset").css("display", "");
-    		
-    		
-    			
     		},
     		error:function(data){
     			console.log(data);
@@ -191,7 +188,6 @@ $(document).ready(function () {
     			$("#id-icon").css("display", "");
     			$("#userpw").removeAttr('disabled', 'disabled');
     			
-
     		},
     		error:function(data){
     			alert("에러가 발생했습니다.");

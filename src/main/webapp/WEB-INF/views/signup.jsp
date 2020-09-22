@@ -30,7 +30,7 @@
                         </div>
                         <!-- google -->
                         <div class="btn-wrap">
-                        	<input type="hidden" value="${google}" id="googleurl">
+                        	<input type="hidden" value="${google_url}" id="googleurl">
                             <button id="glogin" class="google-login-btn btn">
                                 <span>
                                     Google로 회원가입
@@ -39,6 +39,7 @@
                         </div>
                         <!-- Naver -->
                         <div class="btn-wrap">
+                        	<input type="hidden" value="${naver_url}" id="naverurl">	
                             <button id="nlogin" class="naver-login-btn btn">
                                 <span>
                                     Naveer로 회원가입
