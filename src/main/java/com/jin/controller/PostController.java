@@ -59,8 +59,14 @@ public class PostController {
 	
 	@RequestMapping(value = "postUpdate", method = RequestMethod.GET)
 	public void getUpdatePost(postVO vo, Model model ) throws Exception {
-		model.addAttribute("read", Postservice.read(vo));
+		logger.info("update Postservice.read(vo) : " + Postservice.read(vo));
+		postVO post = Postservice.read(vo);
+		logger.info("update Post : " + post);
+		
+		post.setContent(post.getContent().replace("\\", "/"));
+		logger.info("post getcontent : " + post.getContent());
 		model.addAttribute("tag", Tagservice.tagList());
+		model.addAttribute("read", post);
 		logger.info("update get..." + vo);
 		
 	}

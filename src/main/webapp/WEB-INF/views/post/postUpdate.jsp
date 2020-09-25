@@ -28,6 +28,10 @@ $(document).ready(function() {
 	        focus: true, 
 	        lang : 'ko-KR'
 	  });
+	  
+	  //let content = encodeURIComponent('${read.content}');
+	  let content = '${read.content}';
+	  console.log(content);
 	  $(".content").summernote('code', '${read.content}');
 	});
 </script>
