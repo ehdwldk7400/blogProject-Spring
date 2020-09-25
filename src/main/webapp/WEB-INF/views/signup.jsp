@@ -48,6 +48,7 @@
                         </div>
                         <!-- KaKao -->
                         <div class="btn-wrap">
+                       	 <input type="hidden" value="${kakaotalk_url}" id="kakaourl">	
                             <button id="klogin" class="kakao-login-btn btn">
                                 <span>
                                  	   카카오톡으로 회원가입

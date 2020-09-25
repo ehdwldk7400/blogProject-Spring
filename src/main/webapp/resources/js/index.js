@@ -235,8 +235,7 @@ let AllList = function(){
 		    + "<span class='item-span-point'></span>" + "<span class='item-sapn'><a>"+ this.tagname +"</a></span>"
 		    + "<span class='item-span-point'></span>" + "<span class='item-span-point'><img src='resources/img/user.png'></span>"
 		    + "<span class='viewcont'>"+ this.viewcnt +"</span> </div>"
-		    + "<span class='item-span-point'></span>" + "<span class='item-span-point'><img src='resources/img/user.png'></span>"
-		    + "<span class='viewcont'>"+ data +"</span> </div>"
+
 		    + "<h2 class='title-h2'><a href='/blog/post/read?bno="+ this.bno +"'>"+ this.title +"</a></h2>"
 		    + "<p class='title-p'>"+ this.content+"</p>"
 		    + "<a href='/blog/read?bno="+ this.bno +"' class='item-readmove'>Read</a>"

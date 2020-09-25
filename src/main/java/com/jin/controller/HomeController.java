@@ -94,6 +94,7 @@ public class HomeController {
 	@Autowired
 	private SnsValue googleSns;
 	
+	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public void getsignup(HttpSession session, Model model) {
 		logger.info("signup get....");
@@ -106,6 +107,7 @@ public class HomeController {
 		
 		SNSLogin snsLogin = new SNSLogin(naverSns);
 		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
+		
 		
 //		/* 구글code 발행을 위한 URL 생성 */
 //		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
